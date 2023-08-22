@@ -17,7 +17,7 @@ As you make changes to the code within Neovim, the HTML on the target webpage is
 
 Demo:
 
-https://github.com/carlosrocha/chrome-remote.nvim/assets/312351/fbb72ce6-b320-4562-ab7a-f5251ee80e76
+https://github.com/carlosrocha/chrome-remote.nvim/assets/312351/b2947163-f783-40b3-9b3e-ec7b88865cce
 
 ### Fill out textareas in your browser from Neovim
 
@@ -30,7 +30,7 @@ in the corresponding textarea on the webpage. This functionality is kind of the 
 
 Demo:
 
-https://github.com/carlosrocha/chrome-remote.nvim/assets/312351/c27e24d8-f6e1-407c-a159-a3ea191dd213
+https://github.com/carlosrocha/chrome-remote.nvim/assets/312351/314e1d2a-87e9-47ae-864a-8ac7ce9c90fd
 
 ## Installation
 
