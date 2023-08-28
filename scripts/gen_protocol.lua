@@ -10,7 +10,7 @@ end
 
 local function read_json(file)
   local uri = 'https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/json/'
-      .. file
+    .. file
 
   local res = vim.system({ 'curl', '--no-progress-meter', uri, '-o', '-' }):wait()
   if res.code ~= 0 then
