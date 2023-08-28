@@ -4,6 +4,13 @@ local endpoints = require('chrome-remote.endpoints')
 local urllib = require('chrome-remote.url')
 local json = vim.json
 
+---@alias CDP.Client Chrome
+
+---@class CDP.Error
+---@field code integer
+---@field message string
+---@field data string
+
 ---@class chrome_cmd_descr
 ---@field name string
 ---@field parameters any[]
@@ -18,10 +25,13 @@ local json = vim.json
 ---@field commands chrome_cmd_descr[]
 ---@field events chrome_event_descr[]
 
+--- Main protocol descriptor that contains all available commands, events, and types supported
+--- by the target
 ---@class chrome_protocol_descr
 ---@field version { major: string, minor: string }
 ---@field domains chrome_domain_descr[]
 
+--- Targets available on Chrome, received from /json/list or /json/new
 ---@class chrome_target
 ---@field id string
 ---@field title string
@@ -29,18 +39,27 @@ local json = vim.json
 ---@field url string
 ---@field webSocketDebuggerUrl string
 
----@alias chrome_command { id: integer, method: string, sessionId?: string, params?: any }
+---@class chrome_command
+---@field id integer
+---@field method string
+---@field sessionId? string
+---@field params? any
+
 ---@alias chrome_result { id: integer, method: string, sessionId?: string, result?: any, error?: any }
 ---@alias chrome_event { method: string, sessionId?: string, params?: any }
 
----@class Chrome : EventEmitter
+--- Chrome client to connect to a remote target.
+--- Emits the following events:
+--- 'event'
+--- '<domain>.<event_name>'
+---@class Chrome: EventEmitter
+---@class Chrome: CDP
 ---@field private last_cmd_id integer
 ---@field private callbacks table<string, function>
----@field private websocket WebSocket
----@field private url string
+---@field private websocket? WebSocket
+---@field private url? string
 
 local Chrome = setmetatable({}, { __index = EventEmitter })
-local ChromeMeta = { __index = Chrome }
 
 local function assert_resume(thread, ...)
   local success, err = coroutine.resume(thread, ...)
@@ -61,60 +80,53 @@ local function make_callback()
   end
 end
 
+--- Creates a new instance
+---
 ---@return Chrome
 function Chrome.new()
-  local self = EventEmitter.init(setmetatable({}, ChromeMeta))
+  local self = EventEmitter.init(setmetatable({}, { __index = Chrome }))
   self.last_cmd_id = 0
   self.callbacks = {}
   return self
 end
 
+---@async
 ---@param url string
 function Chrome:open_url(url)
   local params = urllib.parse(url)
   self:open(params)
 end
 
+---@private
 ---@param cmd_descr chrome_cmd_descr
 ---@param domain_descr chrome_domain_descr
+---@return fun(self: { client: Chrome }, method: string)
 local function create_command(cmd_descr, domain_descr)
   local cmd_name = string.format('%s.%s', domain_descr.domain, cmd_descr.name)
   return function(self, ...)
-    -- TODO: check here if self is passed correctly
-    return self:send(cmd_name, ...)
-  end
-end
-
----@param event_descr chrome_event_descr
----@param domain_descr chrome_domain_descr
----@return fun(self: Chrome, callback: fun(err: any, result: chrome_event))
-local function create_eventcb(event_descr, domain_descr)
-  local event_name = string.format('%s.%s', domain_descr.domain, event_descr.name)
-  return function(self, callback)
-    -- TODO: check here if self is passed correctly
-    self:on(event_name, callback)
+    return self.client:send(cmd_name, ...)
   end
 end
 
 ---@private
+---@param event_descr chrome_event_descr
+---@param domain_descr chrome_domain_descr
+---@return fun(self: { client: Chrome }, callback: fun(err: any, result: chrome_event))
+local function create_eventcb(event_descr, domain_descr)
+  local event_name = string.format('%s.%s', domain_descr.domain, event_descr.name)
+  return function(self, callback)
+    self.client:on(event_name, callback)
+  end
+end
+
+--- Load the protocol descriptor to initialize all domains and attach them to the client.
+--- This also associates each domain with its respective commands and event callbacks
+---@private
 ---@param protocol_descr chrome_protocol_descr
-function Chrome:setup_api(protocol_descr)
+function Chrome:_setup_api(protocol_descr)
   for _, domain_descr in ipairs(protocol_descr.domains) do
-    self[domain_descr.domain] = setmetatable({ parent = self }, {
-      __index = function(t, key)
-        if key == 'send' then
-          return function(self, ...)
-            return self.parent:send(...)
-          end
-        elseif key == 'on' then
-          return function(self, ...)
-            self.parent:on(...)
-          end
-        else
-          return self[key]
-        end
-      end,
-    })
+    self[domain_descr.domain] = setmetatable({ client = self }, {})
+
     if domain_descr.commands then
       for _, cmd_descr in ipairs(domain_descr.commands) do
         self[domain_descr.domain][cmd_descr.name] = create_command(cmd_descr, domain_descr)
@@ -129,8 +141,11 @@ function Chrome:setup_api(protocol_descr)
   end
 end
 
--- Must be run in a coroutine
+--- Open the websocket connection to the target, awaits on successful websocket connection
+--- Must be run in a coroutine
+---@async
 ---@param params connection_params
+---@return any err, Chrome instance
 function Chrome:open(params)
   endpoints.protocol({
     protocol = 'http',
@@ -142,22 +157,28 @@ function Chrome:open(params)
     return err, result
   end
 
-  self:setup_api(result.content)
+  self:_setup_api(result.content)
   self.websocket = WebSocket.new()
   self.websocket:on('message', function(message)
-    self:handle_message(json.decode(message))
+    self:_handle_message(json.decode(message))
   end)
   self.websocket:open(params, make_callback())
   return coroutine.yield()
 end
 
+--- Closes the connection to target, and releases resources
 function Chrome:close()
   self.last_cmd_id = 0
   self.callbacks = {}
   self.websocket:close()
+  self.websocket = nil
 end
 
----@param method string
+--- Sends the command to the target
+--- This is only async if no callback is provided
+---@async
+---@param method string In the form of <domain>.<method>
+---@return any err, chrome_result? result
 function Chrome:send(method, ...)
   local n = select('#', ...)
   assert(n <= 2, 'only up to 2 args allowed')
@@ -197,7 +218,7 @@ end
 
 ---@private
 ---@param message chrome_result|chrome_event
-function Chrome:handle_message(message)
+function Chrome:_handle_message(message)
   -- command response
   if message.id then
     local cb = self.callbacks[tostring(message.id)]

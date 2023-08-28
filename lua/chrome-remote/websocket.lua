@@ -18,14 +18,13 @@ local function rand4()
   )
 end
 
----@class WebSocket : EventEmitter
----@field sock uv.uv_tcp_t
+---@class WebSocket: EventEmitter
+---@field sock? uv.uv_tcp_t
 local WebSocket = setmetatable({}, { __index = EventEmitter })
-local WebSocketMt = { __index = WebSocket }
 
 ---@return WebSocket
 function WebSocket.new()
-  return EventEmitter.init(setmetatable({}, WebSocketMt))
+  return EventEmitter.init(setmetatable({}, { __index = WebSocket }))
 end
 
 ---@param params connection_params
@@ -119,6 +118,7 @@ function WebSocket:close(code, http_response)
   self.sock:close()
   self.sock = nil
   self:emit('close', code, http_response)
+  self:_clear_event_emitter()
 end
 
 ---@param message string

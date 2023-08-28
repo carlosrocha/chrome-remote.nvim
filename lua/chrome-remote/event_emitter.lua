@@ -1,31 +1,28 @@
 ---@class EventEmitter
----@field private handlers table<string, table<fun(), fun()>>
+---@field private _handlers table<string, table<fun(), fun()>>
 local EventEmitter = {}
 EventEmitter.__index = EventEmitter
 
-function EventEmitter.new()
-  return EventEmitter.init(setmetatable({}, EventEmitter))
-end
-
 function EventEmitter.init(obj)
-  obj.handlers = {}
+  obj._handlers = {}
   return obj
 end
 
 ---@param event string
 ---@param handler fun(...): any
+---@return EventEmitter
 function EventEmitter:on(event, handler)
-  if not self.handlers[event] then
-    self.handlers[event] = {}
+  if not self._handlers[event] then
+    self._handlers[event] = {}
   end
-  self.handlers[event][handler] = handler
+  self._handlers[event][handler] = handler
   return self
 end
 
 ---@param event string
 function EventEmitter:emit(event, ...)
-  if self.handlers[event] then
-    for handler in pairs(self.handlers[event]) do
+  if self._handlers[event] then
+    for handler in pairs(self._handlers[event]) do
       local ok, err = pcall(handler, ...)
       if not ok then
         vim.schedule(function()
@@ -34,6 +31,11 @@ function EventEmitter:emit(event, ...)
       end
     end
   end
+end
+
+---@protected
+function EventEmitter:_clear_event_emitter()
+  self._handlers = {}
 end
 
 return EventEmitter
