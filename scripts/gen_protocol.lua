@@ -93,10 +93,12 @@ local function gen_meta(descriptors)
       if param.optional then
         fieldname = fieldname .. '?'
       end
-      output[#output + 1] = ('---@field %s %s %s'):format(
-        fieldname,
-        map_type(args.domain_name, param),
-        escape(param.description or '')
+      output[#output + 1] = vim.trim(
+        ('---@field %s %s %s'):format(
+          fieldname,
+          map_type(args.domain_name, param),
+          escape(param.description or '')
+        )
       )
     end
   end

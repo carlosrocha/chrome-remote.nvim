@@ -1,1 +1,2 @@
 lua/chrome-remote/http_codec.lua
+lua/chrome-remote/_meta/protocol.lua

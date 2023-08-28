@@ -23,6 +23,7 @@ read_globals = {
 }
 
 files = {
+  ['**/_meta/*.lua'] = { ignore = { '631' } },
   ['lua/plenary/busted.lua'] = {
     globals = {
       'describe',

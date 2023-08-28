@@ -3,7 +3,7 @@ test:
 .PHONY: test
 
 fmt:
-	stylua -g lua/**/*.lua tests/**/*.lua
+	stylua -g 'lua/**/*.lua' -g 'tests/**/*.lua' -g '!**/_meta/*.lua' -- .
 .PHONY: fmt
 
 lint:

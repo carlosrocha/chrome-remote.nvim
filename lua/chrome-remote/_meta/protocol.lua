@@ -6,7 +6,6 @@ error('Cannot require a meta file')
 ---@class CDP._ClientContainer
 ---@field client CDP.Client
 
-
 ---Console message.
 ---@class CDP.Console.ConsoleMessage
 ---@field source "xml" | "javascript" | "network" | "console-api" | "storage" | "appcache" | "rendering" | "security" | "other" | "deprecation" | "worker" Message source.
@@ -39,13 +38,13 @@ error('Cannot require a meta file')
 ---@field columnNumber? integer Column number in the script (0-based).
 ---Location in the source code.
 ---@class CDP.Debugger.ScriptPosition
----@field lineNumber integer 
----@field columnNumber integer 
+---@field lineNumber integer
+---@field columnNumber integer
 ---Location range within one script.
 ---@class CDP.Debugger.LocationRange
----@field scriptId CDP.Runtime.ScriptId 
----@field start CDP.Debugger.ScriptPosition 
----@field end CDP.Debugger.ScriptPosition 
+---@field scriptId CDP.Runtime.ScriptId
+---@field start CDP.Debugger.ScriptPosition
+---@field end CDP.Debugger.ScriptPosition
 ---JavaScript call frame. Array of call frames form the call stack.
 ---@class CDP.Debugger.CallFrame
 ---@field callFrameId CDP.Debugger.CallFrameId Call frame identifier. This identifier is only valid while the virtual machine is paused.
@@ -61,7 +60,7 @@ error('Cannot require a meta file')
 ---@class CDP.Debugger.Scope
 ---@field type "global" | "local" | "with" | "closure" | "catch" | "block" | "script" | "eval" | "module" | "wasm-expression-stack" Scope type.
 ---@field object CDP.Runtime.RemoteObject Object representing the scope. For `global` and `with` scopes it represents the actual<br>object; for the rest of the scopes, it is artificial transient object enumerating scope<br>variables as its properties.
----@field name? string 
+---@field name? string
 ---@field startLocation? CDP.Debugger.Location Location in the source code where scope starts
 ---@field endLocation? CDP.Debugger.Location Location in the source code where scope ends
 ---Search match for resource.
@@ -72,7 +71,7 @@ error('Cannot require a meta file')
 ---@field scriptId CDP.Runtime.ScriptId Script identifier as reported in the `Debugger.scriptParsed`.
 ---@field lineNumber integer Line number in the script (0-based).
 ---@field columnNumber? integer Column number in the script (0-based).
----@field type? "debuggerStatement" | "call" | "return" 
+---@field type? "debuggerStatement" | "call" | "return"
 ---@class CDP.Debugger.WasmDisassemblyChunk
 ---@field lines string[] The next chunk of disassembled lines.
 ---@field bytecodeOffsets integer[] The bytecode offsets describing the start of each line.
@@ -83,7 +82,7 @@ error('Cannot require a meta file')
 ---@field externalURL? string URL of the external symbol source.
 ---@class CDP.Debugger.continueToLocation_parameters
 ---@field location CDP.Debugger.Location Location to continue to.
----@field targetCallFrames? "any" | "current" 
+---@field targetCallFrames? "any" | "current"
 ---@class CDP.Debugger.enable_parameters
 ---@field maxScriptsCacheSize? number The maximum size in bytes of collected scripts (not referenced by other heap objects)<br>the debugger can hold. Puts no limit if parameter is omitted.
 ---@class CDP.Debugger.enable_return
@@ -120,7 +119,7 @@ error('Cannot require a meta file')
 ---@field functionBodyOffsets integer[] The offsets of all function bodies, in the format [start1, end1,<br>start2, end2, ...] where all ends are exclusive.
 ---@field chunk CDP.Debugger.WasmDisassemblyChunk The first chunk of disassembly.
 ---@class CDP.Debugger.nextWasmDisassemblyChunk_parameters
----@field streamId string 
+---@field streamId string
 ---@class CDP.Debugger.nextWasmDisassemblyChunk_return
 ---@field chunk CDP.Debugger.WasmDisassemblyChunk The next chunk of disassembly.
 ---@class CDP.Debugger.getWasmBytecode_parameters
@@ -128,13 +127,13 @@ error('Cannot require a meta file')
 ---@class CDP.Debugger.getWasmBytecode_return
 ---@field bytecode string Script source. (Encoded as a base64 string when passed over JSON)
 ---@class CDP.Debugger.getStackTrace_parameters
----@field stackTraceId CDP.Runtime.StackTraceId 
+---@field stackTraceId CDP.Runtime.StackTraceId
 ---@class CDP.Debugger.getStackTrace_return
----@field stackTrace CDP.Runtime.StackTrace 
+---@field stackTrace CDP.Runtime.StackTrace
 ---@class CDP.Debugger.pauseOnAsyncCall_parameters
 ---@field parentStackTraceId CDP.Runtime.StackTraceId Debugger will pause when async call with given stack trace is started.
 ---@class CDP.Debugger.removeBreakpoint_parameters
----@field breakpointId CDP.Debugger.BreakpointId 
+---@field breakpointId CDP.Debugger.BreakpointId
 ---@class CDP.Debugger.restartFrame_parameters
 ---@field callFrameId CDP.Debugger.CallFrameId Call frame identifier to evaluate on.
 ---@field mode? "StepInto" The `mode` parameter must be present and set to 'StepInto', otherwise<br>`restartFrame` will error out.
@@ -157,7 +156,7 @@ error('Cannot require a meta file')
 ---@field patterns string[] Array of regexps that will be used to check script url for blackbox state.
 ---@class CDP.Debugger.setBlackboxedRanges_parameters
 ---@field scriptId CDP.Runtime.ScriptId Id of the script.
----@field positions CDP.Debugger.ScriptPosition[] 
+---@field positions CDP.Debugger.ScriptPosition[]
 ---@class CDP.Debugger.setBreakpoint_parameters
 ---@field location CDP.Debugger.Location Location to set breakpoint in.
 ---@field condition? string Expression to use as a breakpoint condition. When specified, debugger will only stop on the<br>breakpoint if this expression evaluates to true.
@@ -388,8 +387,8 @@ error('Cannot require a meta file')
 ---@field ordinal number Time-ordered sample ordinal number. It is unique across all profiles retrieved<br>between startSampling and stopSampling.
 ---Sampling profile.
 ---@class CDP.HeapProfiler.SamplingHeapProfile
----@field head CDP.HeapProfiler.SamplingHeapProfileNode 
----@field samples CDP.HeapProfiler.SamplingHeapProfileSample[] 
+---@field head CDP.HeapProfiler.SamplingHeapProfileNode
+---@field samples CDP.HeapProfiler.SamplingHeapProfileSample[]
 ---@class CDP.HeapProfiler.addInspectedHeapObject_parameters
 ---@field heapObjectId CDP.HeapProfiler.HeapSnapshotObjectId Heap snapshot object id to be accessible by means of $x command line API.
 ---@class CDP.HeapProfiler.getHeapObjectId_parameters
@@ -397,7 +396,7 @@ error('Cannot require a meta file')
 ---@class CDP.HeapProfiler.getHeapObjectId_return
 ---@field heapSnapshotObjectId CDP.HeapProfiler.HeapSnapshotObjectId Id of the heap snapshot object corresponding to the passed remote object id.
 ---@class CDP.HeapProfiler.getObjectByHeapObjectId_parameters
----@field objectId CDP.HeapProfiler.HeapSnapshotObjectId 
+---@field objectId CDP.HeapProfiler.HeapSnapshotObjectId
 ---@field objectGroup? string Symbolic group name that can be used to release multiple objects.
 ---@class CDP.HeapProfiler.getObjectByHeapObjectId_return
 ---@field result CDP.Runtime.RemoteObject Evaluation result.
@@ -408,7 +407,7 @@ error('Cannot require a meta file')
 ---@field includeObjectsCollectedByMajorGC? boolean By default, the sampling heap profiler reports only objects which are<br>still alive when the profile is returned via getSamplingProfile or<br>stopSampling, which is useful for determining what functions contribute<br>the most to steady-state memory usage. This flag instructs the sampling<br>heap profiler to also include information about objects discarded by<br>major GC, which will show which functions cause large temporary memory<br>usage or long GC pauses.
 ---@field includeObjectsCollectedByMinorGC? boolean By default, the sampling heap profiler reports only objects which are<br>still alive when the profile is returned via getSamplingProfile or<br>stopSampling, which is useful for determining what functions contribute<br>the most to steady-state memory usage. This flag instructs the sampling<br>heap profiler to also include information about objects discarded by<br>minor GC, which is useful when tuning a latency-sensitive application<br>for minimal GC activity.
 ---@class CDP.HeapProfiler.startTrackingHeapObjects_parameters
----@field trackAllocations? boolean 
+---@field trackAllocations? boolean
 ---@class CDP.HeapProfiler.stopSampling_return
 ---@field profile CDP.HeapProfiler.SamplingHeapProfile Recorded sampling heap profile.
 ---@class CDP.HeapProfiler.stopTrackingHeapObjects_parameters
@@ -422,16 +421,16 @@ error('Cannot require a meta file')
 ---@field captureNumericValue? boolean If true, numerical values are included in the snapshot
 ---@field exposeInternals? boolean If true, exposes internals of the snapshot.
 ---@class CDP.HeapProfiler.addHeapSnapshotChunk_event
----@field chunk string 
+---@field chunk string
 ---@class CDP.HeapProfiler.heapStatsUpdate_event
 ---@field statsUpdate integer[] An array of triplets. Each triplet describes a fragment. The first integer is the fragment<br>index, the second integer is a total count of objects for the fragment, the third integer is<br>a total size of the objects for the fragment.
 ---@class CDP.HeapProfiler.lastSeenObjectId_event
----@field lastSeenObjectId integer 
----@field timestamp number 
+---@field lastSeenObjectId integer
+---@field timestamp number
 ---@class CDP.HeapProfiler.reportHeapSnapshotProgress_event
----@field done integer 
----@field total integer 
----@field finished? boolean 
+---@field done integer
+---@field total integer
+---@field finished? boolean
 ---@class CDP.HeapProfiler: CDP._ClientContainer
 ---Enables console to refer to the node with given id via $x (see Command Line API for more details
 ---$x functions).
@@ -507,12 +506,12 @@ error('Cannot require a meta file')
 ---@field result CDP.Profiler.ScriptCoverage[] Coverage data for the current isolate.
 ---@field timestamp number Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
 ---@class CDP.Profiler.consoleProfileFinished_event
----@field id string 
+---@field id string
 ---@field location CDP.Debugger.Location Location of console.profileEnd().
----@field profile CDP.Profiler.Profile 
+---@field profile CDP.Profiler.Profile
 ---@field title? string Profile title passed as an argument to console.profile().
 ---@class CDP.Profiler.consoleProfileStarted_event
----@field id string 
+---@field id string
 ---@field location CDP.Debugger.Location Location of console.profile().
 ---@field title? string Profile title passed as an argument to console.profile().
 ---@class CDP.Profiler.preciseCoverageDeltaUpdate_event
@@ -552,14 +551,14 @@ error('Cannot require a meta file')
 ---Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
 ---`generateWebDriverValue`.
 ---@class CDP.Runtime.SerializationOptions
----@field serialization "deep" | "json" | "idOnly" 
+---@field serialization "deep" | "json" | "idOnly"
 ---@field maxDepth? integer Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
 ---@field additionalParameters? table Embedder-specific parameters. For example if connected to V8 in Chrome these control DOM<br>serialization via `maxNodeDepth: integer` and `includeShadowTree: "none" | "open" | "all"`.<br>Values can be only of type string or integer.
 ---Represents deep serialized value.
 ---@class CDP.Runtime.DeepSerializedValue
----@field type "undefined" | "null" | "string" | "number" | "boolean" | "bigint" | "regexp" | "date" | "symbol" | "array" | "object" | "function" | "map" | "set" | "weakmap" | "weakset" | "error" | "proxy" | "promise" | "typedarray" | "arraybuffer" | "node" | "window" 
----@field value? any 
----@field objectId? string 
+---@field type "undefined" | "null" | "string" | "number" | "boolean" | "bigint" | "regexp" | "date" | "symbol" | "array" | "object" | "function" | "map" | "set" | "weakmap" | "weakset" | "error" | "proxy" | "promise" | "typedarray" | "arraybuffer" | "node" | "window"
+---@field value? any
+---@field objectId? string
 ---@field weakLocalObjectReference? integer Set if value reference met more then once during serialization. In such<br>case, value is provided only to one of the serialized values. Unique<br>per value in the scope of one CDP call.
 ---@alias CDP.Runtime.RemoteObjectId string Unique object identifier.
 ---@alias CDP.Runtime.UnserializableValue string Primitive value which cannot be JSON-stringified. Includes values `-0`, `NaN`, `Infinity`,<br>`-Infinity`, and bigint literals.
@@ -575,7 +574,7 @@ error('Cannot require a meta file')
 ---@field deepSerializedValue? CDP.Runtime.DeepSerializedValue Deep serialized value.
 ---@field objectId? CDP.Runtime.RemoteObjectId Unique object identifier (for non-primitive values).
 ---@field preview? CDP.Runtime.ObjectPreview Preview containing abbreviated property values. Specified for `object` type values only.
----@field customPreview? CDP.Runtime.CustomPreview 
+---@field customPreview? CDP.Runtime.CustomPreview
 ---@class CDP.Runtime.CustomPreview
 ---@field header string The JSON-stringified result of formatter.header(object, config) call.<br>It contains json ML array that represents RemoteObject.
 ---@field bodyGetterId? CDP.Runtime.RemoteObjectId If formatter returns true as a result of formatter.hasBody call then bodyGetterId will<br>contain RemoteObjectId for the function that returns result of formatter.body(object, config) call.<br>The result value is json ML array.
@@ -664,8 +663,8 @@ error('Cannot require a meta file')
 ---If `debuggerId` is set stack trace comes from another debugger and can be resolved there. This
 ---allows to track cross-debugger calls. See `Runtime.StackTrace` and `Debugger.paused` for usages.
 ---@class CDP.Runtime.StackTraceId
----@field id string 
----@field debuggerId? CDP.Runtime.UniqueDebuggerId 
+---@field id string
+---@field debuggerId? CDP.Runtime.UniqueDebuggerId
 ---@class CDP.Runtime.awaitPromise_parameters
 ---@field promiseObjectId CDP.Runtime.RemoteObjectId Identifier of the promise.
 ---@field returnByValue? boolean Whether the result is expected to be a JSON object that should be sent by value.
@@ -739,7 +738,7 @@ error('Cannot require a meta file')
 ---@class CDP.Runtime.globalLexicalScopeNames_parameters
 ---@field executionContextId? CDP.Runtime.ExecutionContextId Specifies in which execution context to lookup global scope variables.
 ---@class CDP.Runtime.globalLexicalScopeNames_return
----@field names string[] 
+---@field names string[]
 ---@class CDP.Runtime.queryObjects_parameters
 ---@field prototypeObjectId CDP.Runtime.RemoteObjectId Identifier of the prototype to return objects for.
 ---@field objectGroup? string Symbolic group name that can be used to release the results.
@@ -764,22 +763,22 @@ error('Cannot require a meta file')
 ---@class CDP.Runtime.setAsyncCallStackDepth_parameters
 ---@field maxDepth integer Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async<br>call stacks (default).
 ---@class CDP.Runtime.setCustomObjectFormatterEnabled_parameters
----@field enabled boolean 
+---@field enabled boolean
 ---@class CDP.Runtime.setMaxCallStackSizeToCapture_parameters
----@field size integer 
+---@field size integer
 ---@class CDP.Runtime.addBinding_parameters
----@field name string 
+---@field name string
 ---@field executionContextId? CDP.Runtime.ExecutionContextId If specified, the binding would only be exposed to the specified<br>execution context. If omitted and `executionContextName` is not set,<br>the binding is exposed to all execution contexts of the target.<br>This parameter is mutually exclusive with `executionContextName`.<br>Deprecated in favor of `executionContextName` due to an unclear use case<br>and bugs in implementation (crbug.com/1169639). `executionContextId` will be<br>removed in the future.
 ---@field executionContextName? string If specified, the binding is exposed to the executionContext with<br>matching name, even for contexts created after the binding is added.<br>See also `ExecutionContext.name` and `worldName` parameter to<br>`Page.addScriptToEvaluateOnNewDocument`.<br>This parameter is mutually exclusive with `executionContextId`.
 ---@class CDP.Runtime.removeBinding_parameters
----@field name string 
+---@field name string
 ---@class CDP.Runtime.getExceptionDetails_parameters
 ---@field errorObjectId CDP.Runtime.RemoteObjectId The error object for which to resolve the exception details.
 ---@class CDP.Runtime.getExceptionDetails_return
----@field exceptionDetails? CDP.Runtime.ExceptionDetails 
+---@field exceptionDetails? CDP.Runtime.ExceptionDetails
 ---@class CDP.Runtime.bindingCalled_event
----@field name string 
----@field payload string 
+---@field name string
+---@field payload string
 ---@field executionContextId CDP.Runtime.ExecutionContextId Identifier of the context where the call was made.
 ---@class CDP.Runtime.consoleAPICalled_event
 ---@field type "log" | "debug" | "info" | "error" | "warning" | "dir" | "dirxml" | "table" | "trace" | "clear" | "startGroup" | "startGroupCollapsed" | "endGroup" | "assert" | "profile" | "profileEnd" | "count" | "timeEnd" Type of the call.
@@ -793,15 +792,15 @@ error('Cannot require a meta file')
 ---@field exceptionId integer The id of revoked exception, as reported in `exceptionThrown`.
 ---@class CDP.Runtime.exceptionThrown_event
 ---@field timestamp CDP.Runtime.Timestamp Timestamp of the exception.
----@field exceptionDetails CDP.Runtime.ExceptionDetails 
+---@field exceptionDetails CDP.Runtime.ExceptionDetails
 ---@class CDP.Runtime.executionContextCreated_event
 ---@field context CDP.Runtime.ExecutionContextDescription A newly created execution context.
 ---@class CDP.Runtime.executionContextDestroyed_event
 ---@field executionContextId CDP.Runtime.ExecutionContextId Id of the destroyed context
 ---@field executionContextUniqueId string Unique Id of the destroyed context
 ---@class CDP.Runtime.inspectRequested_event
----@field object CDP.Runtime.RemoteObject 
----@field hints table 
+---@field object CDP.Runtime.RemoteObject
+---@field hints table
 ---@field executionContextId? CDP.Runtime.ExecutionContextId Identifier of the context where the call was made.
 ---Runtime domain exposes JavaScript runtime by means of remote evaluation and mirror objects.
 ---Evaluation results are returned as mirror object that expose object type, string representation
@@ -953,22 +952,22 @@ error('Cannot require a meta file')
 ---@field depth? integer The maximum depth at which descendants of the root node should be retrieved.<br>If omitted, the full tree is returned.
 ---@field frameId? CDP.Page.FrameId The frame for whose document the AX tree should be retrieved.<br>If omited, the root frame is used.
 ---@class CDP.Accessibility.getFullAXTree_return
----@field nodes CDP.Accessibility.AXNode[] 
+---@field nodes CDP.Accessibility.AXNode[]
 ---@class CDP.Accessibility.getRootAXNode_parameters
 ---@field frameId? CDP.Page.FrameId The frame in whose document the node resides.<br>If omitted, the root frame is used.
 ---@class CDP.Accessibility.getRootAXNode_return
----@field node CDP.Accessibility.AXNode 
+---@field node CDP.Accessibility.AXNode
 ---@class CDP.Accessibility.getAXNodeAndAncestors_parameters
 ---@field nodeId? CDP.DOM.NodeId Identifier of the node to get.
 ---@field backendNodeId? CDP.DOM.BackendNodeId Identifier of the backend node to get.
 ---@field objectId? CDP.Runtime.RemoteObjectId JavaScript object id of the node wrapper to get.
 ---@class CDP.Accessibility.getAXNodeAndAncestors_return
----@field nodes CDP.Accessibility.AXNode[] 
+---@field nodes CDP.Accessibility.AXNode[]
 ---@class CDP.Accessibility.getChildAXNodes_parameters
----@field id CDP.Accessibility.AXNodeId 
+---@field id CDP.Accessibility.AXNodeId
 ---@field frameId? CDP.Page.FrameId The frame in whose document the node resides.<br>If omitted, the root frame is used.
 ---@class CDP.Accessibility.getChildAXNodes_return
----@field nodes CDP.Accessibility.AXNode[] 
+---@field nodes CDP.Accessibility.AXNode[]
 ---@class CDP.Accessibility.queryAXTree_parameters
 ---@field nodeId? CDP.DOM.NodeId Identifier of the node for the root to query.
 ---@field backendNodeId? CDP.DOM.BackendNodeId Identifier of the backend node for the root to query.
@@ -1105,15 +1104,15 @@ error('Cannot require a meta file')
 ---Information about a cookie that is affected by an inspector issue.
 ---@class CDP.Audits.AffectedCookie
 ---@field name string The following three properties uniquely identify a cookie
----@field path string 
----@field domain string 
+---@field path string
+---@field domain string
 ---Information about a request that is affected by an inspector issue.
 ---@class CDP.Audits.AffectedRequest
 ---@field requestId CDP.Network.RequestId The unique request id.
----@field url? string 
+---@field url? string
 ---Information about the frame affected by an inspector issue.
 ---@class CDP.Audits.AffectedFrame
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@alias CDP.Audits.CookieExclusionReason "ExcludeSameSiteUnspecifiedTreatedAsLax" | "ExcludeSameSiteNoneInsecure" | "ExcludeSameSiteLax" | "ExcludeSameSiteStrict" | "ExcludeInvalidSameParty" | "ExcludeSamePartyCrossPartyContext" | "ExcludeDomainNonASCII" | "ExcludeThirdPartyCookieBlockedInFirstPartySet" | "ExcludeThirdPartyPhaseout"
 ---@alias CDP.Audits.CookieWarningReason "WarnSameSiteUnspecifiedCrossSiteContext" | "WarnSameSiteNoneInsecure" | "WarnSameSiteUnspecifiedLaxAllowUnsafe" | "WarnSameSiteStrictLaxDowngradeStrict" | "WarnSameSiteStrictCrossDowngradeStrict" | "WarnSameSiteStrictCrossDowngradeLax" | "WarnSameSiteLaxCrossDowngradeStrict" | "WarnSameSiteLaxCrossDowngradeLax" | "WarnAttributeValueExceedsMaxSize" | "WarnDomainNonASCII" | "WarnThirdPartyPhaseout"
 ---@alias CDP.Audits.CookieOperation "SetCookie" | "ReadCookie"
@@ -1122,13 +1121,13 @@ error('Cannot require a meta file')
 ---information without the cookie.
 ---@class CDP.Audits.CookieIssueDetails
 ---@field cookie? CDP.Audits.AffectedCookie If AffectedCookie is not set then rawCookieLine contains the raw<br>Set-Cookie header string. This hints at a problem where the<br>cookie line is syntactically or semantically malformed in a way<br>that no valid cookie could be created.
----@field rawCookieLine? string 
----@field cookieWarningReasons CDP.Audits.CookieWarningReason[] 
----@field cookieExclusionReasons CDP.Audits.CookieExclusionReason[] 
+---@field rawCookieLine? string
+---@field cookieWarningReasons CDP.Audits.CookieWarningReason[]
+---@field cookieExclusionReasons CDP.Audits.CookieExclusionReason[]
 ---@field operation CDP.Audits.CookieOperation Optionally identifies the site-for-cookies and the cookie url, which<br>may be used by the front-end as additional context.
----@field siteForCookies? string 
----@field cookieUrl? string 
----@field request? CDP.Audits.AffectedRequest 
+---@field siteForCookies? string
+---@field cookieUrl? string
+---@field request? CDP.Audits.AffectedRequest
 ---@alias CDP.Audits.MixedContentResolutionStatus "MixedContentBlocked" | "MixedContentAutomaticallyUpgraded" | "MixedContentWarning"
 ---@alias CDP.Audits.MixedContentResourceType "AttributionSrc" | "Audio" | "Beacon" | "CSPReport" | "Download" | "EventSource" | "Favicon" | "Font" | "Form" | "Frame" | "Image" | "Import" | "Manifest" | "Ping" | "PluginData" | "PluginResource" | "Prefetch" | "Resource" | "Script" | "ServiceWorker" | "SharedWorker" | "Stylesheet" | "Track" | "Video" | "Worker" | "XMLHttpRequest" | "XSLT"
 ---@class CDP.Audits.MixedContentIssueDetails
@@ -1143,10 +1142,10 @@ error('Cannot require a meta file')
 ---code. Currently only used for COEP/COOP, but may be extended to include
 ---some CSP errors in the future.
 ---@class CDP.Audits.BlockedByResponseIssueDetails
----@field request CDP.Audits.AffectedRequest 
----@field parentFrame? CDP.Audits.AffectedFrame 
----@field blockedFrame? CDP.Audits.AffectedFrame 
----@field reason CDP.Audits.BlockedByResponseReason 
+---@field request CDP.Audits.AffectedRequest
+---@field parentFrame? CDP.Audits.AffectedFrame
+---@field blockedFrame? CDP.Audits.AffectedFrame
+---@field reason CDP.Audits.BlockedByResponseReason
 ---@alias CDP.Audits.HeavyAdResolutionStatus "HeavyAdBlocked" | "HeavyAdWarning"
 ---@alias CDP.Audits.HeavyAdReason "NetworkTotalLimit" | "CpuTotalLimit" | "CpuPeakLimit"
 ---@class CDP.Audits.HeavyAdIssueDetails
@@ -1155,76 +1154,76 @@ error('Cannot require a meta file')
 ---@field frame CDP.Audits.AffectedFrame The frame that was blocked.
 ---@alias CDP.Audits.ContentSecurityPolicyViolationType "kInlineViolation" | "kEvalViolation" | "kURLViolation" | "kTrustedTypesSinkViolation" | "kTrustedTypesPolicyViolation" | "kWasmEvalViolation"
 ---@class CDP.Audits.SourceCodeLocation
----@field scriptId? CDP.Runtime.ScriptId 
----@field url string 
----@field lineNumber integer 
----@field columnNumber integer 
+---@field scriptId? CDP.Runtime.ScriptId
+---@field url string
+---@field lineNumber integer
+---@field columnNumber integer
 ---@class CDP.Audits.ContentSecurityPolicyIssueDetails
 ---@field blockedURL? string The url not included in allowed sources.
 ---@field violatedDirective string Specific directive that is violated, causing the CSP issue.
----@field isReportOnly boolean 
----@field contentSecurityPolicyViolationType CDP.Audits.ContentSecurityPolicyViolationType 
----@field frameAncestor? CDP.Audits.AffectedFrame 
----@field sourceCodeLocation? CDP.Audits.SourceCodeLocation 
----@field violatingNodeId? CDP.DOM.BackendNodeId 
+---@field isReportOnly boolean
+---@field contentSecurityPolicyViolationType CDP.Audits.ContentSecurityPolicyViolationType
+---@field frameAncestor? CDP.Audits.AffectedFrame
+---@field sourceCodeLocation? CDP.Audits.SourceCodeLocation
+---@field violatingNodeId? CDP.DOM.BackendNodeId
 ---@alias CDP.Audits.SharedArrayBufferIssueType "TransferIssue" | "CreationIssue"
 ---Details for a issue arising from an SAB being instantiated in, or
 ---transferred to a context that is not cross-origin isolated.
 ---@class CDP.Audits.SharedArrayBufferIssueDetails
----@field sourceCodeLocation CDP.Audits.SourceCodeLocation 
----@field isWarning boolean 
----@field type CDP.Audits.SharedArrayBufferIssueType 
+---@field sourceCodeLocation CDP.Audits.SourceCodeLocation
+---@field isWarning boolean
+---@field type CDP.Audits.SharedArrayBufferIssueType
 ---@class CDP.Audits.LowTextContrastIssueDetails
----@field violatingNodeId CDP.DOM.BackendNodeId 
----@field violatingNodeSelector string 
----@field contrastRatio number 
----@field thresholdAA number 
----@field thresholdAAA number 
----@field fontSize string 
----@field fontWeight string 
+---@field violatingNodeId CDP.DOM.BackendNodeId
+---@field violatingNodeSelector string
+---@field contrastRatio number
+---@field thresholdAA number
+---@field thresholdAAA number
+---@field fontSize string
+---@field fontWeight string
 ---Details for a CORS related issue, e.g. a warning or error related to
 ---CORS RFC1918 enforcement.
 ---@class CDP.Audits.CorsIssueDetails
----@field corsErrorStatus CDP.Network.CorsErrorStatus 
----@field isWarning boolean 
----@field request CDP.Audits.AffectedRequest 
----@field location? CDP.Audits.SourceCodeLocation 
----@field initiatorOrigin? string 
----@field resourceIPAddressSpace? CDP.Network.IPAddressSpace 
----@field clientSecurityState? CDP.Network.ClientSecurityState 
+---@field corsErrorStatus CDP.Network.CorsErrorStatus
+---@field isWarning boolean
+---@field request CDP.Audits.AffectedRequest
+---@field location? CDP.Audits.SourceCodeLocation
+---@field initiatorOrigin? string
+---@field resourceIPAddressSpace? CDP.Network.IPAddressSpace
+---@field clientSecurityState? CDP.Network.ClientSecurityState
 ---@alias CDP.Audits.AttributionReportingIssueType "PermissionPolicyDisabled" | "UntrustworthyReportingOrigin" | "InsecureContext" | "InvalidHeader" | "InvalidRegisterTriggerHeader" | "SourceAndTriggerHeaders" | "SourceIgnored" | "TriggerIgnored" | "OsSourceIgnored" | "OsTriggerIgnored" | "InvalidRegisterOsSourceHeader" | "InvalidRegisterOsTriggerHeader" | "WebAndOsHeaders" | "NoWebOrOsSupport" | "NavigationRegistrationWithoutTransientUserActivation"
 ---Details for issues around "Attribution Reporting API" usage.
 ---Explainer: https://github.com/WICG/attribution-reporting-api
 ---@class CDP.Audits.AttributionReportingIssueDetails
----@field violationType CDP.Audits.AttributionReportingIssueType 
----@field request? CDP.Audits.AffectedRequest 
----@field violatingNodeId? CDP.DOM.BackendNodeId 
----@field invalidParameter? string 
+---@field violationType CDP.Audits.AttributionReportingIssueType
+---@field request? CDP.Audits.AffectedRequest
+---@field violatingNodeId? CDP.DOM.BackendNodeId
+---@field invalidParameter? string
 ---Details for issues about documents in Quirks Mode
 ---or Limited Quirks Mode that affects page layouting.
 ---@class CDP.Audits.QuirksModeIssueDetails
 ---@field isLimitedQuirksMode boolean If false, it means the document's mode is "quirks"<br>instead of "limited-quirks".
----@field documentNodeId CDP.DOM.BackendNodeId 
----@field url string 
----@field frameId CDP.Page.FrameId 
----@field loaderId CDP.Network.LoaderId 
+---@field documentNodeId CDP.DOM.BackendNodeId
+---@field url string
+---@field frameId CDP.Page.FrameId
+---@field loaderId CDP.Network.LoaderId
 ---@deprecated
 ---@class CDP.Audits.NavigatorUserAgentIssueDetails
----@field url string 
----@field location? CDP.Audits.SourceCodeLocation 
+---@field url string
+---@field location? CDP.Audits.SourceCodeLocation
 ---@alias CDP.Audits.GenericIssueErrorType "CrossOriginPortalPostMessageError" | "FormLabelForNameError" | "FormDuplicateIdForInputError" | "FormInputWithNoLabelError" | "FormAutocompleteAttributeEmptyError" | "FormEmptyIdAndNameAttributesForInputError" | "FormAriaLabelledByToNonExistingId" | "FormInputAssignedAutocompleteValueToIdOrNameAttributeError" | "FormLabelHasNeitherForNorNestedInput" | "FormLabelForMatchesNonExistingIdError" | "FormInputHasWrongButWellIntendedAutocompleteValueError" | "ResponseWasBlockedByORB"
 ---Depending on the concrete errorType, different properties are set.
 ---@class CDP.Audits.GenericIssueDetails
 ---@field errorType CDP.Audits.GenericIssueErrorType Issues with the same errorType are aggregated in the frontend.
----@field frameId? CDP.Page.FrameId 
----@field violatingNodeId? CDP.DOM.BackendNodeId 
----@field violatingNodeAttribute? string 
----@field request? CDP.Audits.AffectedRequest 
+---@field frameId? CDP.Page.FrameId
+---@field violatingNodeId? CDP.DOM.BackendNodeId
+---@field violatingNodeAttribute? string
+---@field request? CDP.Audits.AffectedRequest
 ---This issue tracks information needed to print a deprecation message.
 ---https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
 ---@class CDP.Audits.DeprecationIssueDetails
----@field affectedFrame? CDP.Audits.AffectedFrame 
----@field sourceCodeLocation CDP.Audits.SourceCodeLocation 
+---@field affectedFrame? CDP.Audits.AffectedFrame
+---@field sourceCodeLocation CDP.Audits.SourceCodeLocation
 ---@field type string One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
 ---This issue warns about sites in the redirect chain of a finished navigation
 ---that may be flagged as trackers and have their state cleared if they don't
@@ -1232,23 +1231,23 @@ error('Cannot require a meta file')
 ---For example, if the URL `https://example.test:80/bounce` was in the
 ---redirect chain, the site reported would be `example.test`.
 ---@class CDP.Audits.BounceTrackingIssueDetails
----@field trackingSites string[] 
+---@field trackingSites string[]
 ---@alias CDP.Audits.ClientHintIssueReason "MetaTagAllowListInvalidOrigin" | "MetaTagModifiedHTML"
 ---@class CDP.Audits.FederatedAuthRequestIssueDetails
----@field federatedAuthRequestIssueReason CDP.Audits.FederatedAuthRequestIssueReason 
+---@field federatedAuthRequestIssueReason CDP.Audits.FederatedAuthRequestIssueReason
 ---@alias CDP.Audits.FederatedAuthRequestIssueReason "ShouldEmbargo" | "TooManyRequests" | "WellKnownHttpNotFound" | "WellKnownNoResponse" | "WellKnownInvalidResponse" | "WellKnownListEmpty" | "WellKnownInvalidContentType" | "ConfigNotInWellKnown" | "WellKnownTooBig" | "ConfigHttpNotFound" | "ConfigNoResponse" | "ConfigInvalidResponse" | "ConfigInvalidContentType" | "ClientMetadataHttpNotFound" | "ClientMetadataNoResponse" | "ClientMetadataInvalidResponse" | "ClientMetadataInvalidContentType" | "DisabledInSettings" | "ErrorFetchingSignin" | "InvalidSigninResponse" | "AccountsHttpNotFound" | "AccountsNoResponse" | "AccountsInvalidResponse" | "AccountsListEmpty" | "AccountsInvalidContentType" | "IdTokenHttpNotFound" | "IdTokenNoResponse" | "IdTokenInvalidResponse" | "IdTokenInvalidRequest" | "IdTokenInvalidContentType" | "ErrorIdToken" | "Canceled" | "RpPageNotVisible" | "SilentMediationFailure" | "ThirdPartyCookiesBlocked" Represents the failure reason when a federated authentication reason fails.<br>Should be updated alongside RequestIdTokenStatus in<br>third_party/blink/public/mojom/devtools/inspector_issue.mojom to include<br>all cases except for success.
 ---@class CDP.Audits.FederatedAuthUserInfoRequestIssueDetails
----@field federatedAuthUserInfoRequestIssueReason CDP.Audits.FederatedAuthUserInfoRequestIssueReason 
+---@field federatedAuthUserInfoRequestIssueReason CDP.Audits.FederatedAuthUserInfoRequestIssueReason
 ---@alias CDP.Audits.FederatedAuthUserInfoRequestIssueReason "NotSameOrigin" | "NotIframe" | "NotPotentiallyTrustworthy" | "NoApiPermission" | "NotSignedInWithIdp" | "NoAccountSharingPermission" | "InvalidConfigOrWellKnown" | "InvalidAccountsResponse" | "NoReturningUserFromFetchedAccounts" Represents the failure reason when a getUserInfo() call fails.<br>Should be updated alongside FederatedAuthUserInfoRequestResult in<br>third_party/blink/public/mojom/devtools/inspector_issue.mojom.
 ---This issue tracks client hints related issues. It's used to deprecate old
 ---features, encourage the use of new ones, and provide general guidance.
 ---@class CDP.Audits.ClientHintIssueDetails
----@field sourceCodeLocation CDP.Audits.SourceCodeLocation 
----@field clientHintIssueReason CDP.Audits.ClientHintIssueReason 
+---@field sourceCodeLocation CDP.Audits.SourceCodeLocation
+---@field clientHintIssueReason CDP.Audits.ClientHintIssueReason
 ---@class CDP.Audits.FailedRequestInfo
 ---@field url string The URL that failed to load.
 ---@field failureMessage string The failure message for the failed request.
----@field requestId? CDP.Network.RequestId 
+---@field requestId? CDP.Network.RequestId
 ---@alias CDP.Audits.StyleSheetLoadingIssueReason "LateImportRule" | "RequestFailed"
 ---This issue warns when a referenced stylesheet couldn't be loaded.
 ---@class CDP.Audits.StylesheetLoadingIssueDetails
@@ -1260,29 +1259,29 @@ error('Cannot require a meta file')
 ---specific to the kind of issue. When adding a new issue code, please also
 ---add a new optional field to this type.
 ---@class CDP.Audits.InspectorIssueDetails
----@field cookieIssueDetails? CDP.Audits.CookieIssueDetails 
----@field mixedContentIssueDetails? CDP.Audits.MixedContentIssueDetails 
----@field blockedByResponseIssueDetails? CDP.Audits.BlockedByResponseIssueDetails 
----@field heavyAdIssueDetails? CDP.Audits.HeavyAdIssueDetails 
----@field contentSecurityPolicyIssueDetails? CDP.Audits.ContentSecurityPolicyIssueDetails 
----@field sharedArrayBufferIssueDetails? CDP.Audits.SharedArrayBufferIssueDetails 
----@field lowTextContrastIssueDetails? CDP.Audits.LowTextContrastIssueDetails 
----@field corsIssueDetails? CDP.Audits.CorsIssueDetails 
----@field attributionReportingIssueDetails? CDP.Audits.AttributionReportingIssueDetails 
----@field quirksModeIssueDetails? CDP.Audits.QuirksModeIssueDetails 
----@field navigatorUserAgentIssueDetails? CDP.Audits.NavigatorUserAgentIssueDetails 
----@field genericIssueDetails? CDP.Audits.GenericIssueDetails 
----@field deprecationIssueDetails? CDP.Audits.DeprecationIssueDetails 
----@field clientHintIssueDetails? CDP.Audits.ClientHintIssueDetails 
----@field federatedAuthRequestIssueDetails? CDP.Audits.FederatedAuthRequestIssueDetails 
----@field bounceTrackingIssueDetails? CDP.Audits.BounceTrackingIssueDetails 
----@field stylesheetLoadingIssueDetails? CDP.Audits.StylesheetLoadingIssueDetails 
----@field federatedAuthUserInfoRequestIssueDetails? CDP.Audits.FederatedAuthUserInfoRequestIssueDetails 
+---@field cookieIssueDetails? CDP.Audits.CookieIssueDetails
+---@field mixedContentIssueDetails? CDP.Audits.MixedContentIssueDetails
+---@field blockedByResponseIssueDetails? CDP.Audits.BlockedByResponseIssueDetails
+---@field heavyAdIssueDetails? CDP.Audits.HeavyAdIssueDetails
+---@field contentSecurityPolicyIssueDetails? CDP.Audits.ContentSecurityPolicyIssueDetails
+---@field sharedArrayBufferIssueDetails? CDP.Audits.SharedArrayBufferIssueDetails
+---@field lowTextContrastIssueDetails? CDP.Audits.LowTextContrastIssueDetails
+---@field corsIssueDetails? CDP.Audits.CorsIssueDetails
+---@field attributionReportingIssueDetails? CDP.Audits.AttributionReportingIssueDetails
+---@field quirksModeIssueDetails? CDP.Audits.QuirksModeIssueDetails
+---@field navigatorUserAgentIssueDetails? CDP.Audits.NavigatorUserAgentIssueDetails
+---@field genericIssueDetails? CDP.Audits.GenericIssueDetails
+---@field deprecationIssueDetails? CDP.Audits.DeprecationIssueDetails
+---@field clientHintIssueDetails? CDP.Audits.ClientHintIssueDetails
+---@field federatedAuthRequestIssueDetails? CDP.Audits.FederatedAuthRequestIssueDetails
+---@field bounceTrackingIssueDetails? CDP.Audits.BounceTrackingIssueDetails
+---@field stylesheetLoadingIssueDetails? CDP.Audits.StylesheetLoadingIssueDetails
+---@field federatedAuthUserInfoRequestIssueDetails? CDP.Audits.FederatedAuthUserInfoRequestIssueDetails
 ---@alias CDP.Audits.IssueId string A unique id for a DevTools inspector issue. Allows other entities (e.g.<br>exceptions, CDP message, console messages, etc.) to reference an issue.
 ---An inspector issue reported from the back-end.
 ---@class CDP.Audits.InspectorIssue
----@field code CDP.Audits.InspectorIssueCode 
----@field details CDP.Audits.InspectorIssueDetails 
+---@field code CDP.Audits.InspectorIssueCode
+---@field details CDP.Audits.InspectorIssueDetails
 ---@field issueId? CDP.Audits.IssueId A unique id for this issue. May be omitted if no other entity (e.g.<br>exception, CDP message, etc.) is referencing this issue.
 ---@class CDP.Audits.getEncodedResponse_parameters
 ---@field requestId CDP.Network.RequestId Identifier of the network request to get content for.
@@ -1296,9 +1295,9 @@ error('Cannot require a meta file')
 ---@class CDP.Audits.checkContrast_parameters
 ---@field reportAAA? boolean Whether to report WCAG AAA level issues. Default is false.
 ---@class CDP.Audits.checkFormsIssues_return
----@field formIssues CDP.Audits.GenericIssueDetails[] 
+---@field formIssues CDP.Audits.GenericIssueDetails[]
 ---@class CDP.Audits.issueAdded_event
----@field issue CDP.Audits.InspectorIssue 
+---@field issue CDP.Audits.InspectorIssue
 ---Audits domain allows investigation of page violations and possible improvements.
 ---@class CDP.Audits: CDP._ClientContainer
 ---Returns the response body and size if it were re-encoded with the specified settings. Only
@@ -1328,7 +1327,7 @@ error('Cannot require a meta file')
 ---@field value string address field value, for example Jon Doe.
 ---A list of address fields.
 ---@class CDP.Autofill.AddressFields
----@field fields CDP.Autofill.AddressField[] 
+---@field fields CDP.Autofill.AddressField[]
 ---@class CDP.Autofill.Address
 ---@field fields CDP.Autofill.AddressField[] fields and values defining an address.
 ---Defines how an address can be displayed like in chrome://settings/addresses.
@@ -1353,7 +1352,7 @@ error('Cannot require a meta file')
 ---@field frameId? CDP.Page.FrameId Identifies the frame that field belongs to.
 ---@field card CDP.Autofill.CreditCard Credit card information to fill out the form. Credit card data is not saved.
 ---@class CDP.Autofill.setAddresses_parameters
----@field addresses CDP.Autofill.Address[] 
+---@field addresses CDP.Autofill.Address[]
 ---@class CDP.Autofill.addressFormFilled_event
 ---@field filledFields CDP.Autofill.FilledField[] Information about the fields that were filled
 ---@field addressUi CDP.Autofill.AddressUI An UI representation of the address used to fill the form.<br>Consists of a 2D array where each child represents an address/profile line.
@@ -1374,8 +1373,8 @@ error('Cannot require a meta file')
 ---@alias CDP.BackgroundService.ServiceName "backgroundFetch" | "backgroundSync" | "pushMessaging" | "notifications" | "paymentHandler" | "periodicBackgroundSync" The Background Service that will be associated with the commands/events.<br>Every Background Service operates independently, but they share the same<br>API.
 ---A key-value pair for additional event information to pass along.
 ---@class CDP.BackgroundService.EventMetadata
----@field key string 
----@field value string 
+---@field key string
+---@field value string
 ---@class CDP.BackgroundService.BackgroundServiceEvent
 ---@field timestamp CDP.Network.TimeSinceEpoch Timestamp of the event (in seconds).
 ---@field origin string The origin this event belongs to.
@@ -1386,19 +1385,19 @@ error('Cannot require a meta file')
 ---@field eventMetadata CDP.BackgroundService.EventMetadata[] A list of event-specific information.
 ---@field storageKey string Storage key this event belongs to.
 ---@class CDP.BackgroundService.startObserving_parameters
----@field service CDP.BackgroundService.ServiceName 
+---@field service CDP.BackgroundService.ServiceName
 ---@class CDP.BackgroundService.stopObserving_parameters
----@field service CDP.BackgroundService.ServiceName 
+---@field service CDP.BackgroundService.ServiceName
 ---@class CDP.BackgroundService.setRecording_parameters
----@field shouldRecord boolean 
----@field service CDP.BackgroundService.ServiceName 
+---@field shouldRecord boolean
+---@field service CDP.BackgroundService.ServiceName
 ---@class CDP.BackgroundService.clearEvents_parameters
----@field service CDP.BackgroundService.ServiceName 
+---@field service CDP.BackgroundService.ServiceName
 ---@class CDP.BackgroundService.recordingStateChanged_event
----@field isRecording boolean 
----@field service CDP.BackgroundService.ServiceName 
+---@field isRecording boolean
+---@field service CDP.BackgroundService.ServiceName
 ---@class CDP.BackgroundService.backgroundServiceEventReceived_event
----@field backgroundServiceEvent CDP.BackgroundService.BackgroundServiceEvent 
+---@field backgroundServiceEvent CDP.BackgroundService.BackgroundServiceEvent
 ---Defines events for background web platform features.
 ---@class CDP.BackgroundService: CDP._ClientContainer
 ---Enables event updates for the service.
@@ -1453,7 +1452,7 @@ error('Cannot require a meta file')
 ---@field origin? string Origin the permission applies to, all origins if not specified.
 ---@field browserContextId? CDP.Browser.BrowserContextID Context to override. When omitted, default browser context is used.
 ---@class CDP.Browser.grantPermissions_parameters
----@field permissions CDP.Browser.PermissionType[] 
+---@field permissions CDP.Browser.PermissionType[]
 ---@field origin? string Origin the permission applies to, all origins if not specified.
 ---@field browserContextId? CDP.Browser.BrowserContextID BrowserContext to override permissions. When omitted, default browser context is used.
 ---@class CDP.Browser.resetPermissions_parameters
@@ -1497,12 +1496,12 @@ error('Cannot require a meta file')
 ---@field windowId CDP.Browser.WindowID Browser window id.
 ---@field bounds CDP.Browser.Bounds New window bounds. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined<br>with 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged.
 ---@class CDP.Browser.setDockTile_parameters
----@field badgeLabel? string 
+---@field badgeLabel? string
 ---@field image? string Png encoded image. (Encoded as a base64 string when passed over JSON)
 ---@class CDP.Browser.executeBrowserCommand_parameters
----@field commandId CDP.Browser.BrowserCommandId 
+---@field commandId CDP.Browser.BrowserCommandId
 ---@class CDP.Browser.addPrivacySandboxEnrollmentOverride_parameters
----@field url string 
+---@field url string
 ---@class CDP.Browser.downloadWillBegin_event
 ---@field frameId CDP.Page.FrameId Id of the frame that caused the download to begin.
 ---@field guid string Global unique identifier of the download.
@@ -1742,7 +1741,7 @@ error('Cannot require a meta file')
 ---@field style CDP.CSS.CSSStyle Associated style declaration.
 ---CSS position-fallback rule representation.
 ---@class CDP.CSS.CSSPositionFallbackRule
----@field name CDP.CSS.Value 
+---@field name CDP.CSS.Value
 ---@field tryRules CDP.CSS.CSSTryRule[] List of keyframes.
 ---CSS keyframes rule representation.
 ---@class CDP.CSS.CSSKeyframesRule
@@ -1750,10 +1749,10 @@ error('Cannot require a meta file')
 ---@field keyframes CDP.CSS.CSSKeyframeRule[] List of keyframes.
 ---Representation of a custom property registration through CSS.registerProperty
 ---@class CDP.CSS.CSSPropertyRegistration
----@field propertyName string 
----@field initialValue? CDP.CSS.Value 
----@field inherits boolean 
----@field syntax string 
+---@field propertyName string
+---@field initialValue? CDP.CSS.Value
+---@field inherits boolean
+---@field syntax string
 ---CSS property at-rule representation.
 ---@class CDP.CSS.CSSPropertyRule
 ---@field styleSheetId? CDP.CSS.StyleSheetId The css style sheet identifier (absent for user agent stylesheet and user-specified<br>stylesheet rules) this rule came from.
@@ -1778,7 +1777,7 @@ error('Cannot require a meta file')
 ---@class CDP.CSS.addRule_return
 ---@field rule CDP.CSS.CSSRule The newly created rule.
 ---@class CDP.CSS.collectClassNames_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
+---@field styleSheetId CDP.CSS.StyleSheetId
 ---@class CDP.CSS.collectClassNames_return
 ---@field classNames string[] Class name list.
 ---@class CDP.CSS.createStyleSheet_parameters
@@ -1795,16 +1794,16 @@ error('Cannot require a meta file')
 ---@field computedFontSize? string The computed font size for this node, as a CSS computed value string (e.g. '12px').
 ---@field computedFontWeight? string The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or<br>'100').
 ---@class CDP.CSS.getComputedStyleForNode_parameters
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.CSS.getComputedStyleForNode_return
 ---@field computedStyle CDP.CSS.CSSComputedStyleProperty[] Computed style for the specified DOM node.
 ---@class CDP.CSS.getInlineStylesForNode_parameters
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.CSS.getInlineStylesForNode_return
 ---@field inlineStyle? CDP.CSS.CSSStyle Inline style for the specified DOM node.
 ---@field attributesStyle? CDP.CSS.CSSStyle Attribute-defined element style (e.g. resulting from "width=20 height=100%").
 ---@class CDP.CSS.getMatchedStylesForNode_parameters
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.CSS.getMatchedStylesForNode_return
 ---@field inlineStyle? CDP.CSS.CSSStyle Inline style for the specified DOM node.
 ---@field attributesStyle? CDP.CSS.CSSStyle Attribute-defined element style (e.g. resulting from "width=20 height=100%").
@@ -1818,76 +1817,76 @@ error('Cannot require a meta file')
 ---@field cssPropertyRegistrations? CDP.CSS.CSSPropertyRegistration[] A list of CSS property registrations matching this node.
 ---@field parentLayoutNodeId? CDP.DOM.NodeId Id of the first parent element that does not have display: contents.
 ---@class CDP.CSS.getMediaQueries_return
----@field medias CDP.CSS.CSSMedia[] 
+---@field medias CDP.CSS.CSSMedia[]
 ---@class CDP.CSS.getPlatformFontsForNode_parameters
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.CSS.getPlatformFontsForNode_return
 ---@field fonts CDP.CSS.PlatformFontUsage[] Usage statistics for every employed platform font.
 ---@class CDP.CSS.getStyleSheetText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
+---@field styleSheetId CDP.CSS.StyleSheetId
 ---@class CDP.CSS.getStyleSheetText_return
 ---@field text string The stylesheet text.
 ---@class CDP.CSS.getLayersForNode_parameters
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.CSS.getLayersForNode_return
----@field rootLayer CDP.CSS.CSSLayerData 
+---@field rootLayer CDP.CSS.CSSLayerData
 ---@class CDP.CSS.trackComputedStyleUpdates_parameters
----@field propertiesToTrack CDP.CSS.CSSComputedStyleProperty[] 
+---@field propertiesToTrack CDP.CSS.CSSComputedStyleProperty[]
 ---@class CDP.CSS.takeComputedStyleUpdates_return
 ---@field nodeIds CDP.DOM.NodeId[] The list of node Ids that have their tracked computed styles updated.
 ---@class CDP.CSS.setEffectivePropertyValueForNode_parameters
 ---@field nodeId CDP.DOM.NodeId The element id for which to set property.
----@field propertyName string 
----@field value string 
+---@field propertyName string
+---@field value string
 ---@class CDP.CSS.setKeyframeKey_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field keyText string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field keyText string
 ---@class CDP.CSS.setKeyframeKey_return
 ---@field keyText CDP.CSS.Value The resulting key text after modification.
 ---@class CDP.CSS.setMediaText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field text string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field text string
 ---@class CDP.CSS.setMediaText_return
 ---@field media CDP.CSS.CSSMedia The resulting CSS media rule after modification.
 ---@class CDP.CSS.setContainerQueryText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field text string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field text string
 ---@class CDP.CSS.setContainerQueryText_return
 ---@field containerQuery CDP.CSS.CSSContainerQuery The resulting CSS container query rule after modification.
 ---@class CDP.CSS.setSupportsText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field text string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field text string
 ---@class CDP.CSS.setSupportsText_return
 ---@field supports CDP.CSS.CSSSupports The resulting CSS Supports rule after modification.
 ---@class CDP.CSS.setScopeText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field text string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field text string
 ---@class CDP.CSS.setScopeText_return
 ---@field scope CDP.CSS.CSSScope The resulting CSS Scope rule after modification.
 ---@class CDP.CSS.setRuleSelector_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field range CDP.CSS.SourceRange 
----@field selector string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field range CDP.CSS.SourceRange
+---@field selector string
 ---@class CDP.CSS.setRuleSelector_return
 ---@field selectorList CDP.CSS.SelectorList The resulting selector list after modification.
 ---@class CDP.CSS.setStyleSheetText_parameters
----@field styleSheetId CDP.CSS.StyleSheetId 
----@field text string 
+---@field styleSheetId CDP.CSS.StyleSheetId
+---@field text string
 ---@class CDP.CSS.setStyleSheetText_return
 ---@field sourceMapURL? string URL of source map associated with script (if any).
 ---@class CDP.CSS.setStyleTexts_parameters
----@field edits CDP.CSS.StyleDeclarationEdit[] 
+---@field edits CDP.CSS.StyleDeclarationEdit[]
 ---@class CDP.CSS.setStyleTexts_return
 ---@field styles CDP.CSS.CSSStyle[] The resulting styles after modification.
 ---@class CDP.CSS.stopRuleUsageTracking_return
----@field ruleUsage CDP.CSS.RuleUsage[] 
+---@field ruleUsage CDP.CSS.RuleUsage[]
 ---@class CDP.CSS.takeCoverageDelta_return
----@field coverage CDP.CSS.RuleUsage[] 
+---@field coverage CDP.CSS.RuleUsage[]
 ---@field timestamp number Monotonically increasing time, in seconds.
 ---@class CDP.CSS.setLocalFontsEnabled_parameters
 ---@field enabled boolean Whether rendering of local fonts is enabled.
@@ -1896,7 +1895,7 @@ error('Cannot require a meta file')
 ---@class CDP.CSS.styleSheetAdded_event
 ---@field header CDP.CSS.CSSStyleSheetHeader Added stylesheet metainfo.
 ---@class CDP.CSS.styleSheetChanged_event
----@field styleSheetId CDP.CSS.StyleSheetId 
+---@field styleSheetId CDP.CSS.StyleSheetId
 ---@class CDP.CSS.styleSheetRemoved_event
 ---@field styleSheetId CDP.CSS.StyleSheetId Identifier of the removed stylesheet.
 ---This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
@@ -2012,8 +2011,8 @@ error('Cannot require a meta file')
 ---@field storageBucket? CDP.Storage.StorageBucket Storage bucket of the cache.
 ---@field cacheName string The name of the cache.
 ---@class CDP.CacheStorage.Header
----@field name string 
----@field value string 
+---@field name string
+---@field value string
 ---Cached response
 ---@class CDP.CacheStorage.CachedResponse
 ---@field body string Entry content, base64-encoded. (Encoded as a base64 string when passed over JSON)
@@ -2055,23 +2054,23 @@ error('Cannot require a meta file')
 ---@field requestEntries fun(self: CDP._ClientContainer, params: CDP.CacheStorage.requestEntries_parameters): CDP.Error?, CDP.CacheStorage.requestEntries_return?
 
 ---@class CDP.Cast.Sink
----@field name string 
----@field id string 
+---@field name string
+---@field id string
 ---@field session? string Text describing the current session. Present only if there is an active<br>session on the sink.
 ---@class CDP.Cast.enable_parameters
----@field presentationUrl? string 
+---@field presentationUrl? string
 ---@class CDP.Cast.setSinkToUse_parameters
----@field sinkName string 
+---@field sinkName string
 ---@class CDP.Cast.startDesktopMirroring_parameters
----@field sinkName string 
+---@field sinkName string
 ---@class CDP.Cast.startTabMirroring_parameters
----@field sinkName string 
+---@field sinkName string
 ---@class CDP.Cast.stopCasting_parameters
----@field sinkName string 
+---@field sinkName string
 ---@class CDP.Cast.sinksUpdated_event
----@field sinks CDP.Cast.Sink[] 
+---@field sinks CDP.Cast.Sink[]
 ---@class CDP.Cast.issueUpdated_event
----@field issueMessage string 
+---@field issueMessage string
 ---A domain for interacting with Cast, Presentation API, and Remote Playback API
 ---functionalities.
 ---@class CDP.Cast: CDP._ClientContainer
@@ -2105,7 +2104,7 @@ error('Cannot require a meta file')
 ---@class CDP.DOM.BackendNode
 ---@field nodeType integer `Node`'s nodeType.
 ---@field nodeName string `Node`'s nodeName.
----@field backendNodeId CDP.DOM.BackendNodeId 
+---@field backendNodeId CDP.DOM.BackendNodeId
 ---@alias CDP.DOM.PseudoType "first-line" | "first-letter" | "before" | "after" | "marker" | "backdrop" | "selection" | "target-text" | "spelling-error" | "grammar-error" | "highlight" | "first-line-inherited" | "scrollbar" | "scrollbar-thumb" | "scrollbar-button" | "scrollbar-track" | "scrollbar-track-piece" | "scrollbar-corner" | "resizer" | "input-list-button" | "view-transition" | "view-transition-group" | "view-transition-image-pair" | "view-transition-old" | "view-transition-new" Pseudo element type.
 ---@alias CDP.DOM.ShadowRootType "user-agent" | "open" | "closed" Shadow root type.
 ---@alias CDP.DOM.CompatibilityMode "QuirksMode" | "LimitedQuirksMode" | "NoQuirksMode" Document compatibility mode.
@@ -2143,8 +2142,8 @@ error('Cannot require a meta file')
 ---@field importedDocument? CDP.DOM.Node Deprecated, as the HTML Imports API has been removed (crbug.com/937746).<br>This property used to return the imported document for the HTMLImport links.<br>The property is always undefined now.
 ---@field distributedNodes? CDP.DOM.BackendNode[] Distributed nodes for given insertion point.
 ---@field isSVG? boolean Whether the node is SVG.
----@field compatibilityMode? CDP.DOM.CompatibilityMode 
----@field assignedSlot? CDP.DOM.BackendNode 
+---@field compatibilityMode? CDP.DOM.CompatibilityMode
+---@field assignedSlot? CDP.DOM.BackendNode
 ---A structure holding an RGBA color.
 ---@class CDP.DOM.RGBA
 ---@field r integer The red component, in the [0-255] range.
@@ -2337,7 +2336,7 @@ error('Cannot require a meta file')
 ---@class CDP.DOM.getFileInfo_parameters
 ---@field objectId CDP.Runtime.RemoteObjectId JavaScript object id of the node wrapper.
 ---@class CDP.DOM.getFileInfo_return
----@field path string 
+---@field path string
 ---@class CDP.DOM.setInspectedNode_parameters
 ---@field nodeId CDP.DOM.NodeId DOM node id to be accessible by means of $x command line API.
 ---@class CDP.DOM.setNodeName_parameters
@@ -2352,15 +2351,15 @@ error('Cannot require a meta file')
 ---@field nodeId CDP.DOM.NodeId Id of the node to set markup for.
 ---@field outerHTML string Outer HTML markup to set.
 ---@class CDP.DOM.getFrameOwner_parameters
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@class CDP.DOM.getFrameOwner_return
 ---@field backendNodeId CDP.DOM.BackendNodeId Resulting node.
 ---@field nodeId? CDP.DOM.NodeId Id of the node at given coordinates, only when enabled and requested document.
 ---@class CDP.DOM.getContainerForNode_parameters
----@field nodeId CDP.DOM.NodeId 
----@field containerName? string 
----@field physicalAxes? CDP.DOM.PhysicalAxes 
----@field logicalAxes? CDP.DOM.LogicalAxes 
+---@field nodeId CDP.DOM.NodeId
+---@field containerName? string
+---@field physicalAxes? CDP.DOM.PhysicalAxes
+---@field logicalAxes? CDP.DOM.LogicalAxes
 ---@class CDP.DOM.getContainerForNode_return
 ---@field nodeId? CDP.DOM.NodeId The container node for the given node, or null if not found.
 ---@class CDP.DOM.getQueryingDescendantsForContainer_parameters
@@ -2679,7 +2678,7 @@ error('Cannot require a meta file')
 ---@field currentSourceURL? string The selected url for nodes with a srcset attribute.
 ---@field originURL? string The url of the script (if any) that generates this node.
 ---@field scrollOffsetX? number Scroll offsets, set when this node is a Document.
----@field scrollOffsetY? number 
+---@field scrollOffsetY? number
 ---Details of post layout rendered text positions. The exact layout should not be regarded as
 ---stable and may change between versions.
 ---@class CDP.DOMSnapshot.InlineTextBox
@@ -2706,13 +2705,13 @@ error('Cannot require a meta file')
 ---@alias CDP.DOMSnapshot.ArrayOfStrings CDP.DOMSnapshot.StringIndex[] Index of the string in the strings table.
 ---Data that is only present on rare nodes.
 ---@class CDP.DOMSnapshot.RareStringData
----@field index integer[] 
----@field value CDP.DOMSnapshot.StringIndex[] 
+---@field index integer[]
+---@field value CDP.DOMSnapshot.StringIndex[]
 ---@class CDP.DOMSnapshot.RareBooleanData
----@field index integer[] 
+---@field index integer[]
 ---@class CDP.DOMSnapshot.RareIntegerData
----@field index integer[] 
----@field value integer[] 
+---@field index integer[]
+---@field value integer[]
 ---@alias CDP.DOMSnapshot.Rectangle number[]
 ---Document snapshot.
 ---@class CDP.DOMSnapshot.DocumentSnapshot
@@ -2813,32 +2812,32 @@ error('Cannot require a meta file')
 ---@field isLocalStorage boolean Whether the storage is local storage (not session storage).
 ---@alias CDP.DOMStorage.Item string[] DOM Storage item.
 ---@class CDP.DOMStorage.clear_parameters
----@field storageId CDP.DOMStorage.StorageId 
+---@field storageId CDP.DOMStorage.StorageId
 ---@class CDP.DOMStorage.getDOMStorageItems_parameters
----@field storageId CDP.DOMStorage.StorageId 
+---@field storageId CDP.DOMStorage.StorageId
 ---@class CDP.DOMStorage.getDOMStorageItems_return
----@field entries CDP.DOMStorage.Item[] 
+---@field entries CDP.DOMStorage.Item[]
 ---@class CDP.DOMStorage.removeDOMStorageItem_parameters
----@field storageId CDP.DOMStorage.StorageId 
----@field key string 
+---@field storageId CDP.DOMStorage.StorageId
+---@field key string
 ---@class CDP.DOMStorage.setDOMStorageItem_parameters
----@field storageId CDP.DOMStorage.StorageId 
----@field key string 
----@field value string 
+---@field storageId CDP.DOMStorage.StorageId
+---@field key string
+---@field value string
 ---@class CDP.DOMStorage.domStorageItemAdded_event
----@field storageId CDP.DOMStorage.StorageId 
----@field key string 
----@field newValue string 
+---@field storageId CDP.DOMStorage.StorageId
+---@field key string
+---@field newValue string
 ---@class CDP.DOMStorage.domStorageItemRemoved_event
----@field storageId CDP.DOMStorage.StorageId 
----@field key string 
+---@field storageId CDP.DOMStorage.StorageId
+---@field key string
 ---@class CDP.DOMStorage.domStorageItemUpdated_event
----@field storageId CDP.DOMStorage.StorageId 
----@field key string 
----@field oldValue string 
----@field newValue string 
+---@field storageId CDP.DOMStorage.StorageId
+---@field key string
+---@field oldValue string
+---@field newValue string
 ---@class CDP.DOMStorage.domStorageItemsCleared_event
----@field storageId CDP.DOMStorage.StorageId 
+---@field storageId CDP.DOMStorage.StorageId
 ---Query and modify DOM storage.
 ---@class CDP.DOMStorage: CDP._ClientContainer
 ---@field clear fun(self: CDP._ClientContainer, params: CDP.DOMStorage.clear_parameters): CDP.Error?
@@ -2866,18 +2865,18 @@ error('Cannot require a meta file')
 ---@field message string Error message.
 ---@field code integer Error code.
 ---@class CDP.Database.executeSQL_parameters
----@field databaseId CDP.Database.DatabaseId 
----@field query string 
+---@field databaseId CDP.Database.DatabaseId
+---@field query string
 ---@class CDP.Database.executeSQL_return
----@field columnNames? string[] 
----@field values? any[] 
----@field sqlError? CDP.Database.Error 
+---@field columnNames? string[]
+---@field values? any[]
+---@field sqlError? CDP.Database.Error
 ---@class CDP.Database.getDatabaseTableNames_parameters
----@field databaseId CDP.Database.DatabaseId 
+---@field databaseId CDP.Database.DatabaseId
 ---@class CDP.Database.getDatabaseTableNames_return
----@field tableNames string[] 
+---@field tableNames string[]
 ---@class CDP.Database.addDatabase_event
----@field database CDP.Database.Database 
+---@field database CDP.Database.Database
 ---@class CDP.Database: CDP._ClientContainer
 ---Disables database tracking, prevents database events from being sent to the client.
 ---@field disable fun(self: CDP._ClientContainer): CDP.Error?
@@ -2906,26 +2905,26 @@ error('Cannot require a meta file')
 ---@field offset integer The offset from the screen origin in either the x (for vertical<br>orientation) or y (for horizontal orientation) direction.
 ---@field maskLength integer A display feature may mask content such that it is not physically<br>displayed - this length along with the offset describes this area.<br>A display feature that only splits content will have a 0 mask_length.
 ---@class CDP.Emulation.MediaFeature
----@field name string 
----@field value string 
+---@field name string
+---@field value string
 ---@alias CDP.Emulation.VirtualTimePolicy "advance" | "pause" | "pauseIfNetworkFetchesPending" advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to<br>allow the next delayed task (if any) to run; pause: The virtual time base may not advance;<br>pauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending<br>resource fetches.
 ---Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
 ---@class CDP.Emulation.UserAgentBrandVersion
----@field brand string 
----@field version string 
+---@field brand string
+---@field version string
 ---Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
 ---Missing optional values will be filled in by the target with what it would normally use.
 ---@class CDP.Emulation.UserAgentMetadata
 ---@field brands? CDP.Emulation.UserAgentBrandVersion[] Brands appearing in Sec-CH-UA.
 ---@field fullVersionList? CDP.Emulation.UserAgentBrandVersion[] Brands appearing in Sec-CH-UA-Full-Version-List.
----@field fullVersion? string 
----@field platform string 
----@field platformVersion string 
----@field architecture string 
----@field model string 
----@field mobile boolean 
----@field bitness? string 
----@field wow64? boolean 
+---@field fullVersion? string
+---@field platform string
+---@field platformVersion string
+---@field architecture string
+---@field model string
+---@field mobile boolean
+---@field bitness? string
+---@field wow64? boolean
 ---@alias CDP.Emulation.DisabledImageType "avif" | "webp" Enum of image types that can be disabled.
 ---@class CDP.Emulation.canEmulate_return
 ---@field result boolean True if emulation is supported.
@@ -2980,7 +2979,7 @@ error('Cannot require a meta file')
 ---@field enabled boolean Whether the touch event emulation should be enabled.
 ---@field maxTouchPoints? integer Maximum touch points supported. Defaults to one.
 ---@class CDP.Emulation.setVirtualTimePolicy_parameters
----@field policy CDP.Emulation.VirtualTimePolicy 
+---@field policy CDP.Emulation.VirtualTimePolicy
 ---@field budget? number If set, after this many virtual milliseconds have elapsed virtual time will be paused and a<br>virtualTimeBudgetExpired event is sent.
 ---@field maxVirtualTimeTaskStarvationCount? integer If set this specifies the maximum number of tasks that can be run before virtual is forced<br>forwards to prevent deadlock.
 ---@field initialVirtualTime? CDP.Network.TimeSinceEpoch If set, base::Time::Now will be overridden to initially return this value.
@@ -3173,8 +3172,8 @@ error('Cannot require a meta file')
 ---@field securityOrigin? string At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.<br>Security origin.
 ---@field storageKey? string Storage key.
 ---@field storageBucket? CDP.Storage.StorageBucket Storage bucket. If not specified, it uses the default bucket.
----@field databaseName string 
----@field objectStoreName string 
+---@field databaseName string
+---@field objectStoreName string
 ---@field keyRange CDP.IndexedDB.KeyRange Range of entry keys to delete
 ---@class CDP.IndexedDB.requestData_parameters
 ---@field securityOrigin? string At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.<br>Security origin.
@@ -3252,14 +3251,14 @@ error('Cannot require a meta file')
 ---@field title? string Title associated with a link. Only valid when `mimeType` == "text/uri-list".
 ---@field baseURL? string Stores the base URL for the contained markup. Only valid when `mimeType`<br>== "text/html".
 ---@class CDP.Input.DragData
----@field items CDP.Input.DragDataItem[] 
+---@field items CDP.Input.DragDataItem[]
 ---@field files? string[] List of filenames that should be included when dropping
 ---@field dragOperationsMask integer Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
 ---@class CDP.Input.dispatchDragEvent_parameters
 ---@field type "dragEnter" | "dragOver" | "drop" | "dragCancel" Type of the drag event.
 ---@field x number X coordinate of the event relative to the main frame's viewport in CSS pixels.
 ---@field y number Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to<br>the top of the viewport and Y increases as it proceeds towards the bottom of the viewport.
----@field data CDP.Input.DragData 
+---@field data CDP.Input.DragData
 ---@field modifiers? integer Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8<br>(default: 0).
 ---@class CDP.Input.dispatchKeyEvent_parameters
 ---@field type "keyDown" | "keyUp" | "rawKeyDown" | "char" Type of the key event.
@@ -3320,7 +3319,7 @@ error('Cannot require a meta file')
 ---@class CDP.Input.setIgnoreInputEvents_parameters
 ---@field ignore boolean Ignores input events processing when set to true.
 ---@class CDP.Input.setInterceptDrags_parameters
----@field enabled boolean 
+---@field enabled boolean
 ---@class CDP.Input.synthesizePinchGesture_parameters
 ---@field x number X coordinate of the start of the gesture in CSS pixels.
 ---@field y number Y coordinate of the start of the gesture in CSS pixels.
@@ -3347,7 +3346,7 @@ error('Cannot require a meta file')
 ---@field tapCount? integer Number of times to perform the tap (e.g. 2 for double tap, default: 1).
 ---@field gestureSourceType? CDP.Input.GestureSourceType Which type of input events to be generated (default: 'default', which queries the platform<br>for the preferred input type).
 ---@class CDP.Input.dragIntercepted_event
----@field data CDP.Input.DragData 
+---@field data CDP.Input.DragData
 ---@class CDP.Input: CDP._ClientContainer
 ---Dispatches a drag event into the page.
 ---@field dispatchDragEvent fun(self: CDP._ClientContainer, params: CDP.Input.dispatchDragEvent_parameters): CDP.Error?
@@ -3497,7 +3496,7 @@ error('Cannot require a meta file')
 ---@field source "xml" | "javascript" | "network" | "storage" | "appcache" | "rendering" | "security" | "deprecation" | "worker" | "violation" | "intervention" | "recommendation" | "other" Log entry source.
 ---@field level "verbose" | "info" | "warning" | "error" Log entry severity.
 ---@field text string Logged text.
----@field category? "cors" 
+---@field category? "cors"
 ---@field timestamp CDP.Runtime.Timestamp Timestamp when this entry was added.
 ---@field url? string URL of the resource if known.
 ---@field lineNumber? integer Line number in the resource.
@@ -3537,8 +3536,8 @@ error('Cannot require a meta file')
 ---@field stack string[] Execution stack at the point of allocation.
 ---Array of heap profile samples.
 ---@class CDP.Memory.SamplingProfile
----@field samples CDP.Memory.SamplingProfileNode[] 
----@field modules CDP.Memory.Module[] 
+---@field samples CDP.Memory.SamplingProfileNode[]
+---@field modules CDP.Memory.Module[]
 ---Executable module information
 ---@class CDP.Memory.Module
 ---@field name string Name of the module.
@@ -3546,9 +3545,9 @@ error('Cannot require a meta file')
 ---@field baseAddress string Base address where the module is loaded into memory. Encoded as a decimal<br>or hexadecimal (0x prefixed) string.
 ---@field size number Size of the module in bytes.
 ---@class CDP.Memory.getDOMCounters_return
----@field documents integer 
----@field nodes integer 
----@field jsEventListeners integer 
+---@field documents integer
+---@field nodes integer
+---@field jsEventListeners integer
 ---@class CDP.Memory.setPressureNotificationsSuppressed_parameters
 ---@field suppressed boolean If true, memory pressure notifications will be suppressed.
 ---@class CDP.Memory.simulatePressureNotification_parameters
@@ -3557,11 +3556,11 @@ error('Cannot require a meta file')
 ---@field samplingInterval? integer Average number of bytes between samples.
 ---@field suppressRandomness? boolean Do not randomize intervals between samples.
 ---@class CDP.Memory.getAllTimeSamplingProfile_return
----@field profile CDP.Memory.SamplingProfile 
+---@field profile CDP.Memory.SamplingProfile
 ---@class CDP.Memory.getBrowserSamplingProfile_return
----@field profile CDP.Memory.SamplingProfile 
+---@field profile CDP.Memory.SamplingProfile
 ---@class CDP.Memory.getSamplingProfile_return
----@field profile CDP.Memory.SamplingProfile 
+---@field profile CDP.Memory.SamplingProfile
 ---@class CDP.Memory: CDP._ClientContainer
 ---@field getDOMCounters fun(self: CDP._ClientContainer): CDP.Error?, CDP.Memory.getDOMCounters_return?
 ---@field prepareForLeakDetection fun(self: CDP._ClientContainer): CDP.Error?
@@ -3621,7 +3620,7 @@ error('Cannot require a meta file')
 ---@alias CDP.Network.ResourcePriority "VeryLow" | "Low" | "Medium" | "High" | "VeryHigh" Loading priority of a resource request.
 ---Post data entry for HTTP request
 ---@class CDP.Network.PostDataEntry
----@field bytes? string 
+---@field bytes? string
 ---HTTP request data.
 ---@class CDP.Network.Request
 ---@field url string Request URL (without fragment).
@@ -3668,14 +3667,14 @@ error('Cannot require a meta file')
 ---@alias CDP.Network.BlockedReason "other" | "csp" | "mixed-content" | "origin" | "inspector" | "subresource-filter" | "content-type" | "coep-frame-resource-needs-coep-header" | "coop-sandboxed-iframe-cannot-navigate-to-coop-page" | "corp-not-same-origin" | "corp-not-same-origin-after-defaulted-to-same-origin-by-coep" | "corp-not-same-site" The reason why request was blocked.
 ---@alias CDP.Network.CorsError "DisallowedByMode" | "InvalidResponse" | "WildcardOriginNotAllowed" | "MissingAllowOriginHeader" | "MultipleAllowOriginValues" | "InvalidAllowOriginValue" | "AllowOriginMismatch" | "InvalidAllowCredentials" | "CorsDisabledScheme" | "PreflightInvalidStatus" | "PreflightDisallowedRedirect" | "PreflightWildcardOriginNotAllowed" | "PreflightMissingAllowOriginHeader" | "PreflightMultipleAllowOriginValues" | "PreflightInvalidAllowOriginValue" | "PreflightAllowOriginMismatch" | "PreflightInvalidAllowCredentials" | "PreflightMissingAllowExternal" | "PreflightInvalidAllowExternal" | "PreflightMissingAllowPrivateNetwork" | "PreflightInvalidAllowPrivateNetwork" | "InvalidAllowMethodsPreflightResponse" | "InvalidAllowHeadersPreflightResponse" | "MethodDisallowedByPreflightResponse" | "HeaderDisallowedByPreflightResponse" | "RedirectContainsCredentials" | "InsecurePrivateNetwork" | "InvalidPrivateNetworkAccess" | "UnexpectedPrivateNetworkAccess" | "NoCorsRedirectModeNotFollow" | "PreflightMissingPrivateNetworkAccessId" | "PreflightMissingPrivateNetworkAccessName" | "PrivateNetworkAccessPermissionUnavailable" | "PrivateNetworkAccessPermissionDenied" The reason why request was blocked.
 ---@class CDP.Network.CorsErrorStatus
----@field corsError CDP.Network.CorsError 
----@field failedParameter string 
+---@field corsError CDP.Network.CorsError
+---@field failedParameter string
 ---@alias CDP.Network.ServiceWorkerResponseSource "cache-storage" | "http-cache" | "fallback-code" | "network" Source of serviceworker response.
 ---Determines what type of Trust Token operation is executed and
 ---depending on the type, some additional parameters. The values
 ---are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
 ---@class CDP.Network.TrustTokenParams
----@field operation CDP.Network.TrustTokenOperationType 
+---@field operation CDP.Network.TrustTokenOperationType
 ---@field refreshPolicy "UseCached" | "Refresh" Only set for "token-redemption" operation and determine whether<br>to request a fresh SRR or use a still valid cached SRR.
 ---@field issuers? string[] Origins of issuers from whom to request tokens or redemption<br>records.
 ---@alias CDP.Network.TrustTokenOperationType "Issuance" | "Redemption" | "Signing"
@@ -3836,59 +3835,59 @@ error('Cannot require a meta file')
 ---@class CDP.Network.ConnectTiming
 ---@field requestTime number Timing's requestTime is a baseline in seconds, while the other numbers are ticks in<br>milliseconds relatively to this requestTime. Matches ResourceTiming's requestTime for<br>the same request (but not for redirected requests).
 ---@class CDP.Network.ClientSecurityState
----@field initiatorIsSecureContext boolean 
----@field initiatorIPAddressSpace CDP.Network.IPAddressSpace 
----@field privateNetworkRequestPolicy CDP.Network.PrivateNetworkRequestPolicy 
+---@field initiatorIsSecureContext boolean
+---@field initiatorIPAddressSpace CDP.Network.IPAddressSpace
+---@field privateNetworkRequestPolicy CDP.Network.PrivateNetworkRequestPolicy
 ---@alias CDP.Network.CrossOriginOpenerPolicyValue "SameOrigin" | "SameOriginAllowPopups" | "RestrictProperties" | "UnsafeNone" | "SameOriginPlusCoep" | "RestrictPropertiesPlusCoep"
 ---@class CDP.Network.CrossOriginOpenerPolicyStatus
----@field value CDP.Network.CrossOriginOpenerPolicyValue 
----@field reportOnlyValue CDP.Network.CrossOriginOpenerPolicyValue 
----@field reportingEndpoint? string 
----@field reportOnlyReportingEndpoint? string 
+---@field value CDP.Network.CrossOriginOpenerPolicyValue
+---@field reportOnlyValue CDP.Network.CrossOriginOpenerPolicyValue
+---@field reportingEndpoint? string
+---@field reportOnlyReportingEndpoint? string
 ---@alias CDP.Network.CrossOriginEmbedderPolicyValue "None" | "Credentialless" | "RequireCorp"
 ---@class CDP.Network.CrossOriginEmbedderPolicyStatus
----@field value CDP.Network.CrossOriginEmbedderPolicyValue 
----@field reportOnlyValue CDP.Network.CrossOriginEmbedderPolicyValue 
----@field reportingEndpoint? string 
----@field reportOnlyReportingEndpoint? string 
+---@field value CDP.Network.CrossOriginEmbedderPolicyValue
+---@field reportOnlyValue CDP.Network.CrossOriginEmbedderPolicyValue
+---@field reportingEndpoint? string
+---@field reportOnlyReportingEndpoint? string
 ---@alias CDP.Network.ContentSecurityPolicySource "HTTP" | "Meta"
 ---@class CDP.Network.ContentSecurityPolicyStatus
----@field effectiveDirectives string 
----@field isEnforced boolean 
----@field source CDP.Network.ContentSecurityPolicySource 
+---@field effectiveDirectives string
+---@field isEnforced boolean
+---@field source CDP.Network.ContentSecurityPolicySource
 ---@class CDP.Network.SecurityIsolationStatus
----@field coop? CDP.Network.CrossOriginOpenerPolicyStatus 
----@field coep? CDP.Network.CrossOriginEmbedderPolicyStatus 
----@field csp? CDP.Network.ContentSecurityPolicyStatus[] 
+---@field coop? CDP.Network.CrossOriginOpenerPolicyStatus
+---@field coep? CDP.Network.CrossOriginEmbedderPolicyStatus
+---@field csp? CDP.Network.ContentSecurityPolicyStatus[]
 ---@alias CDP.Network.ReportStatus "Queued" | "Pending" | "MarkedForRemoval" | "Success" The status of a Reporting API report.
 ---@alias CDP.Network.ReportId string
 ---An object representing a report generated by the Reporting API.
 ---@class CDP.Network.ReportingApiReport
----@field id CDP.Network.ReportId 
+---@field id CDP.Network.ReportId
 ---@field initiatorUrl string The URL of the document that triggered the report.
 ---@field destination string The name of the endpoint group that should be used to deliver the report.
 ---@field type string The type of the report (specifies the set of data that is contained in the report body).
 ---@field timestamp CDP.Network.TimeSinceEpoch When the report was generated.
 ---@field depth integer How many uploads deep the related request was.
 ---@field completedAttempts integer The number of delivery attempts made so far, not including an active attempt.
----@field body table 
----@field status CDP.Network.ReportStatus 
+---@field body table
+---@field status CDP.Network.ReportStatus
 ---@class CDP.Network.ReportingApiEndpoint
 ---@field url string The URL of the endpoint to which reports may be delivered.
 ---@field groupName string Name of the endpoint group.
 ---An object providing the result of a network resource load.
 ---@class CDP.Network.LoadNetworkResourcePageResult
----@field success boolean 
+---@field success boolean
 ---@field netError? number Optional values used for error reporting.
----@field netErrorName? string 
----@field httpStatusCode? number 
+---@field netErrorName? string
+---@field httpStatusCode? number
 ---@field stream? CDP.IO.StreamHandle If successful, one of the following two fields holds the result.
 ---@field headers? CDP.Network.Headers Response headers.
 ---An options object that may be extended later to better support CORS,
 ---CORB and streaming.
 ---@class CDP.Network.LoadNetworkResourceOptions
----@field disableCache boolean 
----@field includeCredentials boolean 
+---@field disableCache boolean
+---@field includeCredentials boolean
 ---@class CDP.Network.setAcceptedEncodings_parameters
 ---@field encodings CDP.Network.ContentEncoding[] List of accepted content encodings.
 ---@class CDP.Network.canClearBrowserCache_return
@@ -3898,7 +3897,7 @@ error('Cannot require a meta file')
 ---@class CDP.Network.canEmulateNetworkConditions_return
 ---@field result boolean True if emulation of network conditions is supported.
 ---@class CDP.Network.continueInterceptedRequest_parameters
----@field interceptionId CDP.Network.InterceptionId 
+---@field interceptionId CDP.Network.InterceptionId
 ---@field errorReason? CDP.Network.ErrorReason If set this causes the request to fail with the given reason. Passing `Aborted` for requests<br>marked with `isNavigationRequest` also cancels the navigation. Must not be set in response<br>to an authChallenge.
 ---@field rawResponse? string If set the requests completes using with the provided base64 encoded raw response, including<br>HTTP status line and headers etc... Must not be set in response to an authChallenge. (Encoded as a base64 string when passed over JSON)
 ---@field url? string If set the request url will be modified in a way that's not observable by page. Must not be<br>set in response to an authChallenge.
@@ -3926,7 +3925,7 @@ error('Cannot require a meta file')
 ---@class CDP.Network.getCertificate_parameters
 ---@field origin string Origin to get certificate for.
 ---@class CDP.Network.getCertificate_return
----@field tableNames string[] 
+---@field tableNames string[]
 ---@class CDP.Network.getCookies_parameters
 ---@field urls? string[] The list of URLs for which applicable cookies will be fetched.<br>If not specified, it's assumed to be set to the list containing<br>the URLs of the page and all of its subframes.
 ---@class CDP.Network.getCookies_return
@@ -3946,9 +3945,9 @@ error('Cannot require a meta file')
 ---@field body string Response body.
 ---@field base64Encoded boolean True, if content was sent as base64.
 ---@class CDP.Network.takeResponseBodyForInterceptionAsStream_parameters
----@field interceptionId CDP.Network.InterceptionId 
+---@field interceptionId CDP.Network.InterceptionId
 ---@class CDP.Network.takeResponseBodyForInterceptionAsStream_return
----@field stream CDP.IO.StreamHandle 
+---@field stream CDP.IO.StreamHandle
 ---@class CDP.Network.replayXHR_parameters
 ---@field requestId CDP.Network.RequestId Identifier of XHR to replay.
 ---@class CDP.Network.searchInResponseBody_parameters
@@ -3997,7 +3996,7 @@ error('Cannot require a meta file')
 ---@class CDP.Network.getSecurityIsolationStatus_parameters
 ---@field frameId? CDP.Page.FrameId If no frameId is provided, the status of the target is provided.
 ---@class CDP.Network.getSecurityIsolationStatus_return
----@field status CDP.Network.SecurityIsolationStatus 
+---@field status CDP.Network.SecurityIsolationStatus
 ---@class CDP.Network.enableReportingApi_parameters
 ---@field enable boolean Whether to enable or disable events for the Reporting API
 ---@class CDP.Network.loadNetworkResource_parameters
@@ -4005,7 +4004,7 @@ error('Cannot require a meta file')
 ---@field url string URL of the resource to get content for.
 ---@field options CDP.Network.LoadNetworkResourceOptions Options for the request.
 ---@class CDP.Network.loadNetworkResource_return
----@field resource CDP.Network.LoadNetworkResourcePageResult 
+---@field resource CDP.Network.LoadNetworkResourcePageResult
 ---@class CDP.Network.dataReceived_event
 ---@field requestId CDP.Network.RequestId Request identifier.
 ---@field timestamp CDP.Network.MonotonicTime Timestamp.
@@ -4031,7 +4030,7 @@ error('Cannot require a meta file')
 ---@field encodedDataLength number Total number of bytes received for this request.
 ---@class CDP.Network.requestIntercepted_event
 ---@field interceptionId CDP.Network.InterceptionId Each request the page makes will have a unique id, however if any redirects are encountered<br>while processing that fetch, they will be reported with the same id as the original fetch.<br>Likewise if HTTP authentication is needed then the same fetch id will be used.
----@field request CDP.Network.Request 
+---@field request CDP.Network.Request
 ---@field frameId CDP.Page.FrameId The id of the frame that initiated the request.
 ---@field resourceType CDP.Network.ResourceType How the requested resource will be used.
 ---@field isNavigationRequest boolean Whether this is a navigation request, which can abort the navigation completely.
@@ -4129,8 +4128,8 @@ error('Cannot require a meta file')
 ---@field cookiePartitionKeyOpaque? boolean True if partitioned cookies are enabled, but the partition key is not serializeable to string.
 ---@class CDP.Network.trustTokenOperationDone_event
 ---@field status "Ok" | "InvalidArgument" | "MissingIssuerKeys" | "FailedPrecondition" | "ResourceExhausted" | "AlreadyExists" | "Unavailable" | "Unauthorized" | "BadResponse" | "InternalError" | "UnknownError" | "FulfilledLocally" Detailed success or error status of the operation.<br>'AlreadyExists' also signifies a successful operation, as the result<br>of the operation already exists und thus, the operation was abort<br>preemptively (e.g. a cache hit).
----@field type CDP.Network.TrustTokenOperationType 
----@field requestId CDP.Network.RequestId 
+---@field type CDP.Network.TrustTokenOperationType
+---@field requestId CDP.Network.RequestId
 ---@field topLevelOrigin? string Top level origin. The context in which the operation was attempted.
 ---@field issuerOrigin? string Origin of the issuer in case of a "Issuance" or "Redemption" operation.
 ---@field issuedTokenCount? integer The number of obtained Trust Tokens on a successful "Issuance" operation.
@@ -4150,12 +4149,12 @@ error('Cannot require a meta file')
 ---@field errorMessage string Error message
 ---@field bundleRequestId? CDP.Network.RequestId Bundle request identifier. Used to match this information to another event.<br>This made be absent in case when the instrumentation was enabled only<br>after webbundle was parsed.
 ---@class CDP.Network.reportingApiReportAdded_event
----@field report CDP.Network.ReportingApiReport 
+---@field report CDP.Network.ReportingApiReport
 ---@class CDP.Network.reportingApiReportUpdated_event
----@field report CDP.Network.ReportingApiReport 
+---@field report CDP.Network.ReportingApiReport
 ---@class CDP.Network.reportingApiEndpointsChangedForOrigin_event
 ---@field origin string Origin of the document(s) which configured the endpoints.
----@field endpoints CDP.Network.ReportingApiEndpoint[] 
+---@field endpoints CDP.Network.ReportingApiEndpoint[]
 ---Network domain allows tracking network activities of the page. It exposes information about http,
 ---file, data and other requests and responses, their headers, bodies, timing, etc.
 ---@class CDP.Network: CDP._ClientContainer
@@ -4487,7 +4486,7 @@ error('Cannot require a meta file')
 ---@class CDP.Overlay.setShowHitTestBorders_parameters
 ---@field show boolean True for showing hit-test borders
 ---@class CDP.Overlay.setShowWebVitals_parameters
----@field show boolean 
+---@field show boolean
 ---@class CDP.Overlay.setShowViewportSizeOnResize_parameters
 ---@field show boolean Whether to paint size or not.
 ---@class CDP.Overlay.setShowHinge_parameters
@@ -4497,7 +4496,7 @@ error('Cannot require a meta file')
 ---@class CDP.Overlay.inspectNodeRequested_event
 ---@field backendNodeId CDP.DOM.BackendNodeId Id of the node to inspect.
 ---@class CDP.Overlay.nodeHighlightRequested_event
----@field nodeId CDP.DOM.NodeId 
+---@field nodeId CDP.DOM.NodeId
 ---@class CDP.Overlay.screenshotRequested_event
 ---@field viewport CDP.Page.Viewport Viewport to capture, in device independent pixels (dip).
 ---This domain provides various functionality related to drawing atop the inspected page.
@@ -4575,8 +4574,8 @@ error('Cannot require a meta file')
 ---@alias CDP.Page.AdFrameExplanation "ParentIsAd" | "CreatedByAdScript" | "MatchedBlockingRule"
 ---Indicates whether a frame has been identified as an ad and why.
 ---@class CDP.Page.AdFrameStatus
----@field adFrameType CDP.Page.AdFrameType 
----@field explanations? CDP.Page.AdFrameExplanation[] 
+---@field adFrameType CDP.Page.AdFrameType
+---@field explanations? CDP.Page.AdFrameExplanation[]
 ---Identifies the bottom-most script which caused the frame to be labelled
 ---as an ad.
 ---@class CDP.Page.AdScriptId
@@ -4588,30 +4587,30 @@ error('Cannot require a meta file')
 ---@alias CDP.Page.PermissionsPolicyFeature "accelerometer" | "ambient-light-sensor" | "attribution-reporting" | "autoplay" | "bluetooth" | "browsing-topics" | "camera" | "ch-dpr" | "ch-device-memory" | "ch-downlink" | "ch-ect" | "ch-prefers-color-scheme" | "ch-prefers-reduced-motion" | "ch-prefers-reduced-transparency" | "ch-rtt" | "ch-save-data" | "ch-ua" | "ch-ua-arch" | "ch-ua-bitness" | "ch-ua-platform" | "ch-ua-model" | "ch-ua-mobile" | "ch-ua-form-factor" | "ch-ua-full-version" | "ch-ua-full-version-list" | "ch-ua-platform-version" | "ch-ua-wow64" | "ch-viewport-height" | "ch-viewport-width" | "ch-width" | "clipboard-read" | "clipboard-write" | "compute-pressure" | "cross-origin-isolated" | "direct-sockets" | "display-capture" | "document-domain" | "encrypted-media" | "execution-while-out-of-viewport" | "execution-while-not-rendered" | "focus-without-user-activation" | "fullscreen" | "frobulate" | "gamepad" | "geolocation" | "gyroscope" | "hid" | "identity-credentials-get" | "idle-detection" | "interest-cohort" | "join-ad-interest-group" | "keyboard-map" | "local-fonts" | "magnetometer" | "microphone" | "midi" | "otp-credentials" | "payment" | "picture-in-picture" | "private-aggregation" | "private-state-token-issuance" | "private-state-token-redemption" | "publickey-credentials-get" | "run-ad-auction" | "screen-wake-lock" | "serial" | "shared-autofill" | "shared-storage" | "shared-storage-select-url" | "smart-card" | "storage-access" | "sync-xhr" | "unload" | "usb" | "vertical-scroll" | "web-share" | "window-management" | "window-placement" | "xr-spatial-tracking" All Permissions Policy features. This enum should match the one defined<br>in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
 ---@alias CDP.Page.PermissionsPolicyBlockReason "Header" | "IframeAttribute" | "InFencedFrameTree" | "InIsolatedApp" Reason for a permissions policy feature to be disabled.
 ---@class CDP.Page.PermissionsPolicyBlockLocator
----@field frameId CDP.Page.FrameId 
----@field blockReason CDP.Page.PermissionsPolicyBlockReason 
+---@field frameId CDP.Page.FrameId
+---@field blockReason CDP.Page.PermissionsPolicyBlockReason
 ---@class CDP.Page.PermissionsPolicyFeatureState
----@field feature CDP.Page.PermissionsPolicyFeature 
----@field allowed boolean 
----@field locator? CDP.Page.PermissionsPolicyBlockLocator 
+---@field feature CDP.Page.PermissionsPolicyFeature
+---@field allowed boolean
+---@field locator? CDP.Page.PermissionsPolicyBlockLocator
 ---@alias CDP.Page.OriginTrialTokenStatus "Success" | "NotSupported" | "Insecure" | "Expired" | "WrongOrigin" | "InvalidSignature" | "Malformed" | "WrongVersion" | "FeatureDisabled" | "TokenDisabled" | "FeatureDisabledForUser" | "UnknownTrial" Origin Trial(https://www.chromium.org/blink/origin-trials) support.<br>Status for an Origin Trial token.
 ---@alias CDP.Page.OriginTrialStatus "Enabled" | "ValidTokenNotProvided" | "OSNotSupported" | "TrialNotAllowed" Status for an Origin Trial.
 ---@alias CDP.Page.OriginTrialUsageRestriction "None" | "Subset"
 ---@class CDP.Page.OriginTrialToken
----@field origin string 
----@field matchSubDomains boolean 
----@field trialName string 
----@field expiryTime CDP.Network.TimeSinceEpoch 
----@field isThirdParty boolean 
----@field usageRestriction CDP.Page.OriginTrialUsageRestriction 
+---@field origin string
+---@field matchSubDomains boolean
+---@field trialName string
+---@field expiryTime CDP.Network.TimeSinceEpoch
+---@field isThirdParty boolean
+---@field usageRestriction CDP.Page.OriginTrialUsageRestriction
 ---@class CDP.Page.OriginTrialTokenWithStatus
----@field rawTokenText string 
+---@field rawTokenText string
 ---@field parsedToken? CDP.Page.OriginTrialToken `parsedToken` is present only when the token is extractable and<br>parsable.
----@field status CDP.Page.OriginTrialTokenStatus 
+---@field status CDP.Page.OriginTrialTokenStatus
 ---@class CDP.Page.OriginTrial
----@field trialName string 
----@field status CDP.Page.OriginTrialStatus 
----@field tokensWithStatus CDP.Page.OriginTrialTokenWithStatus[] 
+---@field trialName string
+---@field status CDP.Page.OriginTrialStatus
+---@field tokensWithStatus CDP.Page.OriginTrialTokenWithStatus[]
 ---Information about the Frame on the page.
 ---@class CDP.Page.Frame
 ---@field id CDP.Page.FrameId Frame unique identifier.
@@ -4741,11 +4740,11 @@ error('Cannot require a meta file')
 ---@field explanations CDP.Page.BackForwardCacheNotRestoredExplanation[] Not restored reasons of each frame
 ---@field children CDP.Page.BackForwardCacheNotRestoredExplanationTree[] Array of children frame
 ---@class CDP.Page.addScriptToEvaluateOnLoad_parameters
----@field scriptSource string 
+---@field scriptSource string
 ---@class CDP.Page.addScriptToEvaluateOnLoad_return
 ---@field identifier CDP.Page.ScriptIdentifier Identifier of the added script.
 ---@class CDP.Page.addScriptToEvaluateOnNewDocument_parameters
----@field source string 
+---@field source string
 ---@field worldName? string If specified, creates an isolated world with the given name and evaluates given script in it.<br>This world name will be used as the ExecutionContextDescription::name when the corresponding<br>event is emitted.
 ---@field includeCommandLineAPI? boolean Specifies whether command line API should be available to the script, defaults<br>to false.
 ---@field runImmediately? boolean If true, runs the script immediately on existing execution contexts or worlds.<br>Default: false.
@@ -4775,18 +4774,18 @@ error('Cannot require a meta file')
 ---@field url string URL to match cooke domain and path.
 ---@class CDP.Page.getAppManifest_return
 ---@field url string Manifest location.
----@field errors CDP.Page.AppManifestError[] 
+---@field errors CDP.Page.AppManifestError[]
 ---@field data? string Manifest content.
 ---@field parsed? CDP.Page.AppManifestParsedProperties Parsed manifest properties
 ---@class CDP.Page.getInstallabilityErrors_return
----@field installabilityErrors CDP.Page.InstallabilityError[] 
+---@field installabilityErrors CDP.Page.InstallabilityError[]
 ---@class CDP.Page.getManifestIcons_return
----@field primaryIcon? string 
+---@field primaryIcon? string
 ---@class CDP.Page.getAppId_return
 ---@field appId? string App id, either from manifest's id attribute or computed from start_url
 ---@field recommendedId? string Recommendation for manifest's id attribute to match current id computed from start_url
 ---@class CDP.Page.getAdScriptId_parameters
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@class CDP.Page.getAdScriptId_return
 ---@field adScriptId? CDP.Page.AdScriptId Identifies the bottom-most script which caused the frame to be labelled<br>as an ad. Only sent if frame is labelled as an ad and id is available.
 ---@class CDP.Page.getCookies_return
@@ -4850,9 +4849,9 @@ error('Cannot require a meta file')
 ---@field ignoreCache? boolean If true, browser cache is ignored (as if the user pressed Shift+refresh).
 ---@field scriptToEvaluateOnLoad? string If set, the script will be injected into all frames of the inspected page after reload.<br>Argument will be ignored if reloading dataURL origin.
 ---@class CDP.Page.removeScriptToEvaluateOnLoad_parameters
----@field identifier CDP.Page.ScriptIdentifier 
+---@field identifier CDP.Page.ScriptIdentifier
 ---@class CDP.Page.removeScriptToEvaluateOnNewDocument_parameters
----@field identifier CDP.Page.ScriptIdentifier 
+---@field identifier CDP.Page.ScriptIdentifier
 ---@class CDP.Page.screencastFrameAck_parameters
 ---@field sessionId integer Frame number.
 ---@class CDP.Page.searchInResource_parameters
@@ -4868,13 +4867,13 @@ error('Cannot require a meta file')
 ---@class CDP.Page.setBypassCSP_parameters
 ---@field enabled boolean Whether to bypass page CSP.
 ---@class CDP.Page.getPermissionsPolicyState_parameters
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@class CDP.Page.getPermissionsPolicyState_return
----@field states CDP.Page.PermissionsPolicyFeatureState[] 
+---@field states CDP.Page.PermissionsPolicyFeatureState[]
 ---@class CDP.Page.getOriginTrials_parameters
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@class CDP.Page.getOriginTrials_return
----@field originTrials CDP.Page.OriginTrial[] 
+---@field originTrials CDP.Page.OriginTrial[]
 ---@class CDP.Page.setDeviceMetricsOverride_parameters
 ---@field width integer Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.
 ---@field height integer Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override.
@@ -4921,23 +4920,23 @@ error('Cannot require a meta file')
 ---@class CDP.Page.setWebLifecycleState_parameters
 ---@field state "frozen" | "active" Target lifecycle state
 ---@class CDP.Page.produceCompilationCache_parameters
----@field scripts CDP.Page.CompilationCacheParams[] 
+---@field scripts CDP.Page.CompilationCacheParams[]
 ---@class CDP.Page.addCompilationCache_parameters
----@field url string 
+---@field url string
 ---@field data string Base64-encoded data (Encoded as a base64 string when passed over JSON)
 ---@class CDP.Page.setSPCTransactionMode_parameters
----@field mode CDP.Page.AutoResponseMode 
+---@field mode CDP.Page.AutoResponseMode
 ---@class CDP.Page.setRPHRegistrationMode_parameters
----@field mode CDP.Page.AutoResponseMode 
+---@field mode CDP.Page.AutoResponseMode
 ---@class CDP.Page.generateTestReport_parameters
 ---@field message string Message to be displayed in the report.
 ---@field group? string Specifies the endpoint group to deliver the report to.
 ---@class CDP.Page.setInterceptFileChooserDialog_parameters
----@field enabled boolean 
+---@field enabled boolean
 ---@class CDP.Page.setPrerenderingAllowed_parameters
----@field isAllowed boolean 
+---@field isAllowed boolean
 ---@class CDP.Page.domContentEventFired_event
----@field timestamp CDP.Network.MonotonicTime 
+---@field timestamp CDP.Network.MonotonicTime
 ---@class CDP.Page.fileChooserOpened_event
 ---@field frameId CDP.Page.FrameId Id of the frame containing input node.
 ---@field mode "selectSingle" | "selectMultiple" Input mode.
@@ -4950,10 +4949,10 @@ error('Cannot require a meta file')
 ---@field frameId CDP.Page.FrameId Id of the frame that has cleared its scheduled navigation.
 ---@class CDP.Page.frameDetached_event
 ---@field frameId CDP.Page.FrameId Id of the frame that has been detached.
----@field reason "remove" | "swap" 
+---@field reason "remove" | "swap"
 ---@class CDP.Page.frameNavigated_event
 ---@field frame CDP.Page.Frame Frame object.
----@field type CDP.Page.NavigationType 
+---@field type CDP.Page.NavigationType
 ---@class CDP.Page.documentOpened_event
 ---@field frame CDP.Page.Frame Frame object.
 ---@class CDP.Page.frameRequestedNavigation_event
@@ -4992,15 +4991,15 @@ error('Cannot require a meta file')
 ---@class CDP.Page.lifecycleEvent_event
 ---@field frameId CDP.Page.FrameId Id of the frame.
 ---@field loaderId CDP.Network.LoaderId Loader identifier. Empty string if the request is fetched from worker.
----@field name string 
----@field timestamp CDP.Network.MonotonicTime 
+---@field name string
+---@field timestamp CDP.Network.MonotonicTime
 ---@class CDP.Page.backForwardCacheNotUsed_event
 ---@field loaderId CDP.Network.LoaderId The loader id for the associated navgation.
 ---@field frameId CDP.Page.FrameId The frame id of the associated frame.
 ---@field notRestoredExplanations CDP.Page.BackForwardCacheNotRestoredExplanation[] Array of reasons why the page could not be cached. This must not be empty.
 ---@field notRestoredExplanationsTree? CDP.Page.BackForwardCacheNotRestoredExplanationTree Tree structure of reasons why the page could not be cached for each frame.
 ---@class CDP.Page.loadEventFired_event
----@field timestamp CDP.Network.MonotonicTime 
+---@field timestamp CDP.Network.MonotonicTime
 ---@class CDP.Page.navigatedWithinDocument_event
 ---@field frameId CDP.Page.FrameId Id of the frame.
 ---@field url string Frame's new url.
@@ -5016,7 +5015,7 @@ error('Cannot require a meta file')
 ---@field windowFeatures string[] An array of enabled window features.
 ---@field userGesture boolean Whether or not it was triggered by user gesture.
 ---@class CDP.Page.compilationCacheProduced_event
----@field url string 
+---@field url string
 ---@field data string Base64-encoded data (Encoded as a base64 string when passed over JSON)
 ---Actions and events related to the inspected page belong to the page domain.
 ---@class CDP.Page: CDP._ClientContainer
@@ -5253,34 +5252,34 @@ error('Cannot require a meta file')
 
 ---See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
 ---@class CDP.PerformanceTimeline.LargestContentfulPaint
----@field renderTime CDP.Network.TimeSinceEpoch 
----@field loadTime CDP.Network.TimeSinceEpoch 
+---@field renderTime CDP.Network.TimeSinceEpoch
+---@field loadTime CDP.Network.TimeSinceEpoch
 ---@field size number The number of pixels being painted.
 ---@field elementId? string The id attribute of the element, if available.
 ---@field url? string The URL of the image (may be trimmed).
----@field nodeId? CDP.DOM.BackendNodeId 
+---@field nodeId? CDP.DOM.BackendNodeId
 ---@class CDP.PerformanceTimeline.LayoutShiftAttribution
----@field previousRect CDP.DOM.Rect 
----@field currentRect CDP.DOM.Rect 
----@field nodeId? CDP.DOM.BackendNodeId 
+---@field previousRect CDP.DOM.Rect
+---@field currentRect CDP.DOM.Rect
+---@field nodeId? CDP.DOM.BackendNodeId
 ---See https://wicg.github.io/layout-instability/#sec-layout-shift and layout_shift.idl
 ---@class CDP.PerformanceTimeline.LayoutShift
 ---@field value number Score increment produced by this event.
----@field hadRecentInput boolean 
----@field lastInputTime CDP.Network.TimeSinceEpoch 
----@field sources CDP.PerformanceTimeline.LayoutShiftAttribution[] 
+---@field hadRecentInput boolean
+---@field lastInputTime CDP.Network.TimeSinceEpoch
+---@field sources CDP.PerformanceTimeline.LayoutShiftAttribution[]
 ---@class CDP.PerformanceTimeline.TimelineEvent
 ---@field frameId CDP.Page.FrameId Identifies the frame that this event is related to. Empty for non-frame targets.
 ---@field type string The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype<br>This determines which of the optional "details" fiedls is present.
 ---@field name string Name may be empty depending on the type.
 ---@field time CDP.Network.TimeSinceEpoch Time in seconds since Epoch, monotonically increasing within document lifetime.
 ---@field duration? number Event duration, if applicable.
----@field lcpDetails? CDP.PerformanceTimeline.LargestContentfulPaint 
----@field layoutShiftDetails? CDP.PerformanceTimeline.LayoutShift 
+---@field lcpDetails? CDP.PerformanceTimeline.LargestContentfulPaint
+---@field layoutShiftDetails? CDP.PerformanceTimeline.LayoutShift
 ---@class CDP.PerformanceTimeline.enable_parameters
 ---@field eventTypes string[] The types of event to report, as specified in<br>https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype<br>The specified filter overrides any previous filters, passing empty<br>filter disables recording.<br>Note that not all types exposed to the web platform are currently supported.
 ---@class CDP.PerformanceTimeline.timelineEventAdded_event
----@field event CDP.PerformanceTimeline.TimelineEvent 
+---@field event CDP.PerformanceTimeline.TimelineEvent
 ---Reporting of performance timeline events, as specified in
 ---https://w3c.github.io/performance-timeline/#dom-performanceobserver.
 ---@class CDP.PerformanceTimeline: CDP._ClientContainer
@@ -5388,63 +5387,63 @@ error('Cannot require a meta file')
 ---@alias CDP.ServiceWorker.RegistrationID string
 ---ServiceWorker registration.
 ---@class CDP.ServiceWorker.ServiceWorkerRegistration
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field scopeURL string 
----@field isDeleted boolean 
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field scopeURL string
+---@field isDeleted boolean
 ---@alias CDP.ServiceWorker.ServiceWorkerVersionRunningStatus "stopped" | "starting" | "running" | "stopping"
 ---@alias CDP.ServiceWorker.ServiceWorkerVersionStatus "new" | "installing" | "installed" | "activating" | "activated" | "redundant"
 ---ServiceWorker version.
 ---@class CDP.ServiceWorker.ServiceWorkerVersion
----@field versionId string 
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field scriptURL string 
----@field runningStatus CDP.ServiceWorker.ServiceWorkerVersionRunningStatus 
----@field status CDP.ServiceWorker.ServiceWorkerVersionStatus 
+---@field versionId string
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field scriptURL string
+---@field runningStatus CDP.ServiceWorker.ServiceWorkerVersionRunningStatus
+---@field status CDP.ServiceWorker.ServiceWorkerVersionStatus
 ---@field scriptLastModified? number The Last-Modified header value of the main script.
 ---@field scriptResponseTime? number The time at which the response headers of the main script were received from the server.<br>For cached script it is the last time the cache entry was validated.
----@field controlledClients? CDP.Target.TargetID[] 
----@field targetId? CDP.Target.TargetID 
+---@field controlledClients? CDP.Target.TargetID[]
+---@field targetId? CDP.Target.TargetID
 ---ServiceWorker error message.
 ---@class CDP.ServiceWorker.ServiceWorkerErrorMessage
----@field errorMessage string 
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field versionId string 
----@field sourceURL string 
----@field lineNumber integer 
----@field columnNumber integer 
+---@field errorMessage string
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field versionId string
+---@field sourceURL string
+---@field lineNumber integer
+---@field columnNumber integer
 ---@class CDP.ServiceWorker.deliverPushMessage_parameters
----@field origin string 
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field data string 
+---@field origin string
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field data string
 ---@class CDP.ServiceWorker.dispatchSyncEvent_parameters
----@field origin string 
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field tag string 
----@field lastChance boolean 
+---@field origin string
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field tag string
+---@field lastChance boolean
 ---@class CDP.ServiceWorker.dispatchPeriodicSyncEvent_parameters
----@field origin string 
----@field registrationId CDP.ServiceWorker.RegistrationID 
----@field tag string 
+---@field origin string
+---@field registrationId CDP.ServiceWorker.RegistrationID
+---@field tag string
 ---@class CDP.ServiceWorker.inspectWorker_parameters
----@field versionId string 
+---@field versionId string
 ---@class CDP.ServiceWorker.setForceUpdateOnPageLoad_parameters
----@field forceUpdateOnPageLoad boolean 
+---@field forceUpdateOnPageLoad boolean
 ---@class CDP.ServiceWorker.skipWaiting_parameters
----@field scopeURL string 
+---@field scopeURL string
 ---@class CDP.ServiceWorker.startWorker_parameters
----@field scopeURL string 
+---@field scopeURL string
 ---@class CDP.ServiceWorker.stopWorker_parameters
----@field versionId string 
+---@field versionId string
 ---@class CDP.ServiceWorker.unregister_parameters
----@field scopeURL string 
+---@field scopeURL string
 ---@class CDP.ServiceWorker.updateRegistration_parameters
----@field scopeURL string 
+---@field scopeURL string
 ---@class CDP.ServiceWorker.workerErrorReported_event
----@field errorMessage CDP.ServiceWorker.ServiceWorkerErrorMessage 
+---@field errorMessage CDP.ServiceWorker.ServiceWorkerErrorMessage
 ---@class CDP.ServiceWorker.workerRegistrationUpdated_event
----@field registrations CDP.ServiceWorker.ServiceWorkerRegistration[] 
+---@field registrations CDP.ServiceWorker.ServiceWorkerRegistration[]
 ---@class CDP.ServiceWorker.workerVersionUpdated_event
----@field versions CDP.ServiceWorker.ServiceWorkerVersion[] 
+---@field versions CDP.ServiceWorker.ServiceWorkerVersion[]
 ---@class CDP.ServiceWorker: CDP._ClientContainer
 ---@field deliverPushMessage fun(self: CDP._ClientContainer, params: CDP.ServiceWorker.deliverPushMessage_parameters): CDP.Error?
 ---@field disable fun(self: CDP._ClientContainer): CDP.Error?
@@ -5472,41 +5471,41 @@ error('Cannot require a meta file')
 ---Pair of issuer origin and number of available (signed, but not used) Trust
 ---Tokens from that issuer.
 ---@class CDP.Storage.TrustTokens
----@field issuerOrigin string 
----@field count number 
+---@field issuerOrigin string
+---@field count number
 ---@alias CDP.Storage.InterestGroupAccessType "join" | "leave" | "update" | "loaded" | "bid" | "win" Enum of interest group access types.
 ---Ad advertising element inside an interest group.
 ---@class CDP.Storage.InterestGroupAd
----@field renderUrl string 
----@field metadata? string 
+---@field renderUrl string
+---@field metadata? string
 ---The full details of an interest group.
 ---@class CDP.Storage.InterestGroupDetails
----@field ownerOrigin string 
----@field name string 
----@field expirationTime CDP.Network.TimeSinceEpoch 
----@field joiningOrigin string 
----@field biddingUrl? string 
----@field biddingWasmHelperUrl? string 
----@field updateUrl? string 
----@field trustedBiddingSignalsUrl? string 
----@field trustedBiddingSignalsKeys string[] 
----@field userBiddingSignals? string 
----@field ads CDP.Storage.InterestGroupAd[] 
----@field adComponents CDP.Storage.InterestGroupAd[] 
+---@field ownerOrigin string
+---@field name string
+---@field expirationTime CDP.Network.TimeSinceEpoch
+---@field joiningOrigin string
+---@field biddingUrl? string
+---@field biddingWasmHelperUrl? string
+---@field updateUrl? string
+---@field trustedBiddingSignalsUrl? string
+---@field trustedBiddingSignalsKeys string[]
+---@field userBiddingSignals? string
+---@field ads CDP.Storage.InterestGroupAd[]
+---@field adComponents CDP.Storage.InterestGroupAd[]
 ---@alias CDP.Storage.SharedStorageAccessType "documentAddModule" | "documentSelectURL" | "documentRun" | "documentSet" | "documentAppend" | "documentDelete" | "documentClear" | "workletSet" | "workletAppend" | "workletDelete" | "workletClear" | "workletGet" | "workletKeys" | "workletEntries" | "workletLength" | "workletRemainingBudget" Enum of shared storage access types.
 ---Struct for a single key-value pair in an origin's shared storage.
 ---@class CDP.Storage.SharedStorageEntry
----@field key string 
----@field value string 
+---@field key string
+---@field value string
 ---Details for an origin's shared storage.
 ---@class CDP.Storage.SharedStorageMetadata
----@field creationTime CDP.Network.TimeSinceEpoch 
----@field length integer 
----@field remainingBudget number 
+---@field creationTime CDP.Network.TimeSinceEpoch
+---@field length integer
+---@field remainingBudget number
 ---Pair of reporting metadata details for a candidate URL for `selectURL()`.
 ---@class CDP.Storage.SharedStorageReportingMetadata
----@field eventType string 
----@field reportingUrl string 
+---@field eventType string
+---@field reportingUrl string
 ---Bundles a candidate URL with its reporting metadata.
 ---@class CDP.Storage.SharedStorageUrlWithMetadata
 ---@field url string Spec of candidate URL.
@@ -5523,44 +5522,44 @@ error('Cannot require a meta file')
 ---@field ignoreIfPresent? boolean Whether or not to set an entry for a key if that key is already present.<br>Present only for SharedStorageAccessType.documentSet and<br>SharedStorageAccessType.workletSet.
 ---@alias CDP.Storage.StorageBucketsDurability "relaxed" | "strict"
 ---@class CDP.Storage.StorageBucket
----@field storageKey CDP.Storage.SerializedStorageKey 
+---@field storageKey CDP.Storage.SerializedStorageKey
 ---@field name? string If not specified, it is the default bucket of the storageKey.
 ---@class CDP.Storage.StorageBucketInfo
----@field bucket CDP.Storage.StorageBucket 
----@field id string 
----@field expiration CDP.Network.TimeSinceEpoch 
+---@field bucket CDP.Storage.StorageBucket
+---@field id string
+---@field expiration CDP.Network.TimeSinceEpoch
 ---@field quota number Storage quota (bytes).
----@field persistent boolean 
----@field durability CDP.Storage.StorageBucketsDurability 
+---@field persistent boolean
+---@field durability CDP.Storage.StorageBucketsDurability
 ---@alias CDP.Storage.AttributionReportingSourceType "navigation" | "event"
 ---@alias CDP.Storage.UnsignedInt64AsBase10 string
 ---@alias CDP.Storage.UnsignedInt128AsBase16 string
 ---@alias CDP.Storage.SignedInt64AsBase10 string
 ---@class CDP.Storage.AttributionReportingFilterDataEntry
----@field key string 
----@field values string[] 
+---@field key string
+---@field values string[]
 ---@class CDP.Storage.AttributionReportingAggregationKeysEntry
----@field key string 
----@field value CDP.Storage.UnsignedInt128AsBase16 
+---@field key string
+---@field value CDP.Storage.UnsignedInt128AsBase16
 ---@class CDP.Storage.AttributionReportingSourceRegistration
----@field time CDP.Network.TimeSinceEpoch 
+---@field time CDP.Network.TimeSinceEpoch
 ---@field expiry? integer duration in seconds
 ---@field eventReportWindow? integer duration in seconds
 ---@field aggregatableReportWindow? integer duration in seconds
----@field type CDP.Storage.AttributionReportingSourceType 
----@field sourceOrigin string 
----@field reportingOrigin string 
----@field destinationSites string[] 
----@field eventId CDP.Storage.UnsignedInt64AsBase10 
----@field priority CDP.Storage.SignedInt64AsBase10 
----@field filterData CDP.Storage.AttributionReportingFilterDataEntry[] 
----@field aggregationKeys CDP.Storage.AttributionReportingAggregationKeysEntry[] 
----@field debugKey? CDP.Storage.UnsignedInt64AsBase10 
+---@field type CDP.Storage.AttributionReportingSourceType
+---@field sourceOrigin string
+---@field reportingOrigin string
+---@field destinationSites string[]
+---@field eventId CDP.Storage.UnsignedInt64AsBase10
+---@field priority CDP.Storage.SignedInt64AsBase10
+---@field filterData CDP.Storage.AttributionReportingFilterDataEntry[]
+---@field aggregationKeys CDP.Storage.AttributionReportingAggregationKeysEntry[]
+---@field debugKey? CDP.Storage.UnsignedInt64AsBase10
 ---@alias CDP.Storage.AttributionReportingSourceRegistrationResult "success" | "internalError" | "insufficientSourceCapacity" | "insufficientUniqueDestinationCapacity" | "excessiveReportingOrigins" | "prohibitedByBrowserPolicy" | "successNoised" | "destinationReportingLimitReached" | "destinationGlobalLimitReached" | "destinationBothLimitsReached" | "reportingOriginsPerSiteLimitReached" | "exceedsMaxChannelCapacity"
 ---@class CDP.Storage.getStorageKeyForFrame_parameters
----@field frameId CDP.Page.FrameId 
+---@field frameId CDP.Page.FrameId
 ---@class CDP.Storage.getStorageKeyForFrame_return
----@field storageKey CDP.Storage.SerializedStorageKey 
+---@field storageKey CDP.Storage.SerializedStorageKey
 ---@class CDP.Storage.clearDataForOrigin_parameters
 ---@field origin string Security origin.
 ---@field storageTypes string Comma separated list of StorageType to clear.
@@ -5603,51 +5602,51 @@ error('Cannot require a meta file')
 ---@class CDP.Storage.untrackIndexedDBForStorageKey_parameters
 ---@field storageKey string Storage key.
 ---@class CDP.Storage.getTrustTokens_return
----@field tokens CDP.Storage.TrustTokens[] 
+---@field tokens CDP.Storage.TrustTokens[]
 ---@class CDP.Storage.clearTrustTokens_parameters
----@field issuerOrigin string 
+---@field issuerOrigin string
 ---@class CDP.Storage.clearTrustTokens_return
 ---@field didDeleteTokens boolean True if any tokens were deleted, false otherwise.
 ---@class CDP.Storage.getInterestGroupDetails_parameters
----@field ownerOrigin string 
----@field name string 
+---@field ownerOrigin string
+---@field name string
 ---@class CDP.Storage.getInterestGroupDetails_return
----@field details CDP.Storage.InterestGroupDetails 
+---@field details CDP.Storage.InterestGroupDetails
 ---@class CDP.Storage.setInterestGroupTracking_parameters
----@field enable boolean 
+---@field enable boolean
 ---@class CDP.Storage.getSharedStorageMetadata_parameters
----@field ownerOrigin string 
+---@field ownerOrigin string
 ---@class CDP.Storage.getSharedStorageMetadata_return
----@field metadata CDP.Storage.SharedStorageMetadata 
+---@field metadata CDP.Storage.SharedStorageMetadata
 ---@class CDP.Storage.getSharedStorageEntries_parameters
----@field ownerOrigin string 
+---@field ownerOrigin string
 ---@class CDP.Storage.getSharedStorageEntries_return
----@field entries CDP.Storage.SharedStorageEntry[] 
+---@field entries CDP.Storage.SharedStorageEntry[]
 ---@class CDP.Storage.setSharedStorageEntry_parameters
----@field ownerOrigin string 
----@field key string 
----@field value string 
+---@field ownerOrigin string
+---@field key string
+---@field value string
 ---@field ignoreIfPresent? boolean If `ignoreIfPresent` is included and true, then only sets the entry if<br>`key` doesn't already exist.
 ---@class CDP.Storage.deleteSharedStorageEntry_parameters
----@field ownerOrigin string 
----@field key string 
+---@field ownerOrigin string
+---@field key string
 ---@class CDP.Storage.clearSharedStorageEntries_parameters
----@field ownerOrigin string 
+---@field ownerOrigin string
 ---@class CDP.Storage.resetSharedStorageBudget_parameters
----@field ownerOrigin string 
+---@field ownerOrigin string
 ---@class CDP.Storage.setSharedStorageTracking_parameters
----@field enable boolean 
+---@field enable boolean
 ---@class CDP.Storage.setStorageBucketTracking_parameters
----@field storageKey string 
----@field enable boolean 
+---@field storageKey string
+---@field enable boolean
 ---@class CDP.Storage.deleteStorageBucket_parameters
----@field bucket CDP.Storage.StorageBucket 
+---@field bucket CDP.Storage.StorageBucket
 ---@class CDP.Storage.runBounceTrackingMitigations_return
----@field deletedSites string[] 
+---@field deletedSites string[]
 ---@class CDP.Storage.setAttributionReportingLocalTestingMode_parameters
 ---@field enabled boolean If enabled, noise is suppressed and reports are sent immediately.
 ---@class CDP.Storage.setAttributionReportingTracking_parameters
----@field enable boolean 
+---@field enable boolean
 ---@class CDP.Storage.cacheStorageContentUpdated_event
 ---@field origin string Origin to update.
 ---@field storageKey string Storage key to update.
@@ -5668,10 +5667,10 @@ error('Cannot require a meta file')
 ---@field storageKey string Storage key to update.
 ---@field bucketId string Storage bucket to update.
 ---@class CDP.Storage.interestGroupAccessed_event
----@field accessTime CDP.Network.TimeSinceEpoch 
----@field type CDP.Storage.InterestGroupAccessType 
----@field ownerOrigin string 
----@field name string 
+---@field accessTime CDP.Network.TimeSinceEpoch
+---@field type CDP.Storage.InterestGroupAccessType
+---@field ownerOrigin string
+---@field name string
 ---@class CDP.Storage.sharedStorageAccessed_event
 ---@field accessTime CDP.Network.TimeSinceEpoch Time of the access.
 ---@field type CDP.Storage.SharedStorageAccessType Enum value indicating the Shared Storage API method invoked.
@@ -5679,12 +5678,12 @@ error('Cannot require a meta file')
 ---@field ownerOrigin string Serialized origin for the context that invoked the Shared Storage API.
 ---@field params CDP.Storage.SharedStorageAccessParams The sub-parameters warapped by `params` are all optional and their<br>presence/absence depends on `type`.
 ---@class CDP.Storage.storageBucketCreatedOrUpdated_event
----@field bucketInfo CDP.Storage.StorageBucketInfo 
+---@field bucketInfo CDP.Storage.StorageBucketInfo
 ---@class CDP.Storage.storageBucketDeleted_event
----@field bucketId string 
+---@field bucketId string
 ---@class CDP.Storage.attributionReportingSourceRegistered_event
----@field registration CDP.Storage.AttributionReportingSourceRegistration 
----@field result CDP.Storage.AttributionReportingSourceRegistrationResult 
+---@field registration CDP.Storage.AttributionReportingSourceRegistration
+---@field result CDP.Storage.AttributionReportingSourceRegistrationResult
 ---@class CDP.Storage: CDP._ClientContainer
 ---Returns a storage key given a frame id.
 ---@field getStorageKeyForFrame fun(self: CDP._ClientContainer, params: CDP.Storage.getStorageKeyForFrame_parameters): CDP.Error?, CDP.Storage.getStorageKeyForFrame_return?
@@ -5797,7 +5796,7 @@ error('Cannot require a meta file')
 ---@field profile string Video codec profile that is supported, e.g H264 Main.
 ---@field maxResolution CDP.SystemInfo.Size Maximum video dimensions in pixels supported for this |profile|.
 ---@field maxFramerateNumerator integer Maximum encoding framerate in frames per second supported for this<br>|profile|, as fraction's numerator and denominator, e.g. 24/1 fps,<br>24000/1001 fps, etc.
----@field maxFramerateDenominator integer 
+---@field maxFramerateDenominator integer
 ---@alias CDP.SystemInfo.SubsamplingFormat "yuv420" | "yuv422" | "yuv444" YUV subsampling type of the pixels of a given image.
 ---@alias CDP.SystemInfo.ImageType "jpeg" | "webp" | "unknown" Image format of a given image.
 ---Describes a supported image decoding profile with its associated minimum and
@@ -5827,9 +5826,9 @@ error('Cannot require a meta file')
 ---@field modelVersion string A platform-dependent description of the version of the machine. On Mac OS, this is, for<br>example, '10.1'. Will be the empty string if not supported.
 ---@field commandLine string The command line string used to launch the browser. Will be the empty string if not<br>supported.
 ---@class CDP.SystemInfo.getFeatureState_parameters
----@field featureState string 
+---@field featureState string
 ---@class CDP.SystemInfo.getFeatureState_return
----@field featureEnabled boolean 
+---@field featureEnabled boolean
 ---@class CDP.SystemInfo.getProcessInfo_return
 ---@field processInfo CDP.SystemInfo.ProcessInfo[] An array of process info blocks.
 ---The SystemInfo domain defines methods and events for querying low-level system information.
@@ -5844,15 +5843,15 @@ error('Cannot require a meta file')
 ---@alias CDP.Target.TargetID string
 ---@alias CDP.Target.SessionID string Unique identifier of attached debugging session.
 ---@class CDP.Target.TargetInfo
----@field targetId CDP.Target.TargetID 
----@field type string 
----@field title string 
----@field url string 
+---@field targetId CDP.Target.TargetID
+---@field type string
+---@field title string
+---@field url string
 ---@field attached boolean Whether the target has an attached client.
 ---@field openerId? CDP.Target.TargetID Opener target Id
 ---@field canAccessOpener boolean Whether the target has access to the originating window.
 ---@field openerFrameId? CDP.Page.FrameId Frame id of originating window (is only set if target has an opener).
----@field browserContextId? CDP.Browser.BrowserContextID 
+---@field browserContextId? CDP.Browser.BrowserContextID
 ---@field subtype? string Provides additional details for specific target types. For example, for<br>the type of "page", this may be set to "portal" or "prerender".
 ---A filter used by target query/discovery/auto-attach operations.
 ---@class CDP.Target.FilterEntry
@@ -5860,23 +5859,23 @@ error('Cannot require a meta file')
 ---@field type? string If not present, matches any type.
 ---@alias CDP.Target.TargetFilter CDP.Target.FilterEntry[] The entries in TargetFilter are matched sequentially against targets and<br>the first entry that matches determines if the target is included or not,<br>depending on the value of `exclude` field in the entry.<br>If filter is not specified, the one assumed is<br>[{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]<br>(i.e. include everything but `browser` and `tab`).
 ---@class CDP.Target.RemoteLocation
----@field host string 
----@field port integer 
+---@field host string
+---@field port integer
 ---@class CDP.Target.activateTarget_parameters
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@class CDP.Target.attachToTarget_parameters
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@field flatten? boolean Enables "flat" access to the session via specifying sessionId attribute in the commands.<br>We plan to make this the default, deprecate non-flattened mode,<br>and eventually retire it. See crbug.com/991325.
 ---@class CDP.Target.attachToTarget_return
 ---@field sessionId CDP.Target.SessionID Id assigned to the session.
 ---@class CDP.Target.attachToBrowserTarget_return
 ---@field sessionId CDP.Target.SessionID Id assigned to the session.
 ---@class CDP.Target.closeTarget_parameters
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@class CDP.Target.closeTarget_return
 ---@field success boolean Always set to true. If an error occurs, the response indicates protocol error.
 ---@class CDP.Target.exposeDevToolsProtocol_parameters
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@field bindingName? string Binding name, 'cdp' if not specified.
 ---@class CDP.Target.createBrowserContext_parameters
 ---@field disposeOnDetach? boolean If specified, disposes this context when debugging session disconnects.
@@ -5902,17 +5901,17 @@ error('Cannot require a meta file')
 ---@field sessionId? CDP.Target.SessionID Session to detach.
 ---@field targetId? CDP.Target.TargetID Deprecated.
 ---@class CDP.Target.disposeBrowserContext_parameters
----@field browserContextId CDP.Browser.BrowserContextID 
+---@field browserContextId CDP.Browser.BrowserContextID
 ---@class CDP.Target.getTargetInfo_parameters
----@field targetId? CDP.Target.TargetID 
+---@field targetId? CDP.Target.TargetID
 ---@class CDP.Target.getTargetInfo_return
----@field targetInfo CDP.Target.TargetInfo 
+---@field targetInfo CDP.Target.TargetInfo
 ---@class CDP.Target.getTargets_parameters
 ---@field filter? CDP.Target.TargetFilter Only targets matching filter will be reported. If filter is not specified<br>and target discovery is currently enabled, a filter used for target discovery<br>is used for consistency.
 ---@class CDP.Target.getTargets_return
 ---@field targetInfos CDP.Target.TargetInfo[] The list of targets.
 ---@class CDP.Target.sendMessageToTarget_parameters
----@field message string 
+---@field message string
 ---@field sessionId? CDP.Target.SessionID Identifier of the session.
 ---@field targetId? CDP.Target.TargetID Deprecated.
 ---@class CDP.Target.setAutoAttach_parameters
@@ -5921,7 +5920,7 @@ error('Cannot require a meta file')
 ---@field flatten? boolean Enables "flat" access to the session via specifying sessionId attribute in the commands.<br>We plan to make this the default, deprecate non-flattened mode,<br>and eventually retire it. See crbug.com/991325.
 ---@field filter? CDP.Target.TargetFilter Only targets matching filter will be attached.
 ---@class CDP.Target.autoAttachRelated_parameters
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@field waitForDebuggerOnStart boolean Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger`<br>to run paused targets.
 ---@field filter? CDP.Target.TargetFilter Only targets matching filter will be attached.
 ---@class CDP.Target.setDiscoverTargets_parameters
@@ -5931,25 +5930,25 @@ error('Cannot require a meta file')
 ---@field locations CDP.Target.RemoteLocation[] List of remote locations.
 ---@class CDP.Target.attachedToTarget_event
 ---@field sessionId CDP.Target.SessionID Identifier assigned to the session used to send/receive messages.
----@field targetInfo CDP.Target.TargetInfo 
----@field waitingForDebugger boolean 
+---@field targetInfo CDP.Target.TargetInfo
+---@field waitingForDebugger boolean
 ---@class CDP.Target.detachedFromTarget_event
 ---@field sessionId CDP.Target.SessionID Detached session identifier.
 ---@field targetId? CDP.Target.TargetID Deprecated.
 ---@class CDP.Target.receivedMessageFromTarget_event
 ---@field sessionId CDP.Target.SessionID Identifier of a session which sends a message.
----@field message string 
+---@field message string
 ---@field targetId? CDP.Target.TargetID Deprecated.
 ---@class CDP.Target.targetCreated_event
----@field targetInfo CDP.Target.TargetInfo 
+---@field targetInfo CDP.Target.TargetInfo
 ---@class CDP.Target.targetDestroyed_event
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@class CDP.Target.targetCrashed_event
----@field targetId CDP.Target.TargetID 
+---@field targetId CDP.Target.TargetID
 ---@field status string Termination status type.
 ---@field errorCode integer Termination error code.
 ---@class CDP.Target.targetInfoChanged_event
----@field targetInfo CDP.Target.TargetInfo 
+---@field targetInfo CDP.Target.TargetInfo
 ---Supports additional targets discovery and allows to attach to them.
 ---@class CDP.Target: CDP._ClientContainer
 ---Activates (focuses) the target.
@@ -6073,7 +6072,7 @@ error('Cannot require a meta file')
 ---@field transferMode? "ReportEvents" | "ReturnAsStream" Whether to report trace events as series of dataCollected events or to save trace to a<br>stream (defaults to `ReportEvents`).
 ---@field streamFormat? CDP.Tracing.StreamFormat Trace data format to use. This only applies when using `ReturnAsStream`<br>transfer mode (defaults to `json`).
 ---@field streamCompression? CDP.Tracing.StreamCompression Compression format to use. This only applies when using `ReturnAsStream`<br>transfer mode (defaults to `none`)
----@field traceConfig? CDP.Tracing.TraceConfig 
+---@field traceConfig? CDP.Tracing.TraceConfig
 ---@field perfettoConfig? string Base64-encoded serialized perfetto.protos.TraceConfig protobuf message<br>When specified, the parameters `categories`, `options`, `traceConfig`<br>are ignored. (Encoded as a base64 string when passed over JSON)
 ---@field tracingBackend? CDP.Tracing.TracingBackend Backend type (defaults to `auto`)
 ---@class CDP.Tracing.bufferUsage_event
@@ -6081,7 +6080,7 @@ error('Cannot require a meta file')
 ---@field eventCount? number An approximate number of events in the trace log.
 ---@field value? number A number in range [0..1] that indicates the used size of event buffer as a fraction of its<br>total size.
 ---@class CDP.Tracing.dataCollected_event
----@field value table[] 
+---@field value table[]
 ---@class CDP.Tracing.tracingComplete_event
 ---@field dataLossOccurred boolean Indicates whether some trace data is known to have been lost, e.g. because the trace ring<br>buffer wrapped around.
 ---@field stream? CDP.IO.StreamHandle A handle of the stream that holds resulting trace data.
@@ -6114,8 +6113,8 @@ error('Cannot require a meta file')
 ---@field requestStage? CDP.Fetch.RequestStage Stage at which to begin intercepting requests. Default is Request.
 ---Response HTTP header entry
 ---@class CDP.Fetch.HeaderEntry
----@field name string 
----@field value string 
+---@field name string
+---@field value string
 ---Authorization challenge for HTTP status code 401 or 407.
 ---@class CDP.Fetch.AuthChallenge
 ---@field source? "Server" | "Proxy" Source of the authentication challenge.
@@ -6162,9 +6161,9 @@ error('Cannot require a meta file')
 ---@field body string Response body.
 ---@field base64Encoded boolean True, if content was sent as base64.
 ---@class CDP.Fetch.takeResponseBodyAsStream_parameters
----@field requestId CDP.Fetch.RequestId 
+---@field requestId CDP.Fetch.RequestId
 ---@class CDP.Fetch.takeResponseBodyAsStream_return
----@field stream CDP.IO.StreamHandle 
+---@field stream CDP.IO.StreamHandle
 ---@class CDP.Fetch.requestPaused_event
 ---@field requestId CDP.Fetch.RequestId Each request the page makes will have a unique id.
 ---@field request CDP.Network.Request The details of the request.
@@ -6255,85 +6254,85 @@ error('Cannot require a meta file')
 ---@field callbackIntervalVariance number A running variance of callback interval.
 ---Protocol object for BaseAudioContext
 ---@class CDP.WebAudio.BaseAudioContext
----@field contextId CDP.WebAudio.GraphObjectId 
----@field contextType CDP.WebAudio.ContextType 
----@field contextState CDP.WebAudio.ContextState 
----@field realtimeData? CDP.WebAudio.ContextRealtimeData 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field contextType CDP.WebAudio.ContextType
+---@field contextState CDP.WebAudio.ContextState
+---@field realtimeData? CDP.WebAudio.ContextRealtimeData
 ---@field callbackBufferSize number Platform-dependent callback buffer size.
 ---@field maxOutputChannelCount number Number of output channels supported by audio hardware in use.
 ---@field sampleRate number Context sample rate.
 ---Protocol object for AudioListener
 ---@class CDP.WebAudio.AudioListener
----@field listenerId CDP.WebAudio.GraphObjectId 
----@field contextId CDP.WebAudio.GraphObjectId 
+---@field listenerId CDP.WebAudio.GraphObjectId
+---@field contextId CDP.WebAudio.GraphObjectId
 ---Protocol object for AudioNode
 ---@class CDP.WebAudio.AudioNode
----@field nodeId CDP.WebAudio.GraphObjectId 
----@field contextId CDP.WebAudio.GraphObjectId 
----@field nodeType CDP.WebAudio.NodeType 
----@field numberOfInputs number 
----@field numberOfOutputs number 
----@field channelCount number 
----@field channelCountMode CDP.WebAudio.ChannelCountMode 
----@field channelInterpretation CDP.WebAudio.ChannelInterpretation 
+---@field nodeId CDP.WebAudio.GraphObjectId
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field nodeType CDP.WebAudio.NodeType
+---@field numberOfInputs number
+---@field numberOfOutputs number
+---@field channelCount number
+---@field channelCountMode CDP.WebAudio.ChannelCountMode
+---@field channelInterpretation CDP.WebAudio.ChannelInterpretation
 ---Protocol object for AudioParam
 ---@class CDP.WebAudio.AudioParam
----@field paramId CDP.WebAudio.GraphObjectId 
----@field nodeId CDP.WebAudio.GraphObjectId 
----@field contextId CDP.WebAudio.GraphObjectId 
----@field paramType CDP.WebAudio.ParamType 
----@field rate CDP.WebAudio.AutomationRate 
----@field defaultValue number 
----@field minValue number 
----@field maxValue number 
+---@field paramId CDP.WebAudio.GraphObjectId
+---@field nodeId CDP.WebAudio.GraphObjectId
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field paramType CDP.WebAudio.ParamType
+---@field rate CDP.WebAudio.AutomationRate
+---@field defaultValue number
+---@field minValue number
+---@field maxValue number
 ---@class CDP.WebAudio.getRealtimeData_parameters
----@field contextId CDP.WebAudio.GraphObjectId 
+---@field contextId CDP.WebAudio.GraphObjectId
 ---@class CDP.WebAudio.getRealtimeData_return
----@field realtimeData CDP.WebAudio.ContextRealtimeData 
+---@field realtimeData CDP.WebAudio.ContextRealtimeData
 ---@class CDP.WebAudio.contextCreated_event
----@field context CDP.WebAudio.BaseAudioContext 
+---@field context CDP.WebAudio.BaseAudioContext
 ---@class CDP.WebAudio.contextWillBeDestroyed_event
----@field contextId CDP.WebAudio.GraphObjectId 
+---@field contextId CDP.WebAudio.GraphObjectId
 ---@class CDP.WebAudio.contextChanged_event
----@field context CDP.WebAudio.BaseAudioContext 
+---@field context CDP.WebAudio.BaseAudioContext
 ---@class CDP.WebAudio.audioListenerCreated_event
----@field listener CDP.WebAudio.AudioListener 
+---@field listener CDP.WebAudio.AudioListener
 ---@class CDP.WebAudio.audioListenerWillBeDestroyed_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field listenerId CDP.WebAudio.GraphObjectId 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field listenerId CDP.WebAudio.GraphObjectId
 ---@class CDP.WebAudio.audioNodeCreated_event
----@field node CDP.WebAudio.AudioNode 
+---@field node CDP.WebAudio.AudioNode
 ---@class CDP.WebAudio.audioNodeWillBeDestroyed_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field nodeId CDP.WebAudio.GraphObjectId 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field nodeId CDP.WebAudio.GraphObjectId
 ---@class CDP.WebAudio.audioParamCreated_event
----@field param CDP.WebAudio.AudioParam 
+---@field param CDP.WebAudio.AudioParam
 ---@class CDP.WebAudio.audioParamWillBeDestroyed_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field nodeId CDP.WebAudio.GraphObjectId 
----@field paramId CDP.WebAudio.GraphObjectId 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field nodeId CDP.WebAudio.GraphObjectId
+---@field paramId CDP.WebAudio.GraphObjectId
 ---@class CDP.WebAudio.nodesConnected_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field sourceId CDP.WebAudio.GraphObjectId 
----@field destinationId CDP.WebAudio.GraphObjectId 
----@field sourceOutputIndex? number 
----@field destinationInputIndex? number 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field sourceId CDP.WebAudio.GraphObjectId
+---@field destinationId CDP.WebAudio.GraphObjectId
+---@field sourceOutputIndex? number
+---@field destinationInputIndex? number
 ---@class CDP.WebAudio.nodesDisconnected_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field sourceId CDP.WebAudio.GraphObjectId 
----@field destinationId CDP.WebAudio.GraphObjectId 
----@field sourceOutputIndex? number 
----@field destinationInputIndex? number 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field sourceId CDP.WebAudio.GraphObjectId
+---@field destinationId CDP.WebAudio.GraphObjectId
+---@field sourceOutputIndex? number
+---@field destinationInputIndex? number
 ---@class CDP.WebAudio.nodeParamConnected_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field sourceId CDP.WebAudio.GraphObjectId 
----@field destinationId CDP.WebAudio.GraphObjectId 
----@field sourceOutputIndex? number 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field sourceId CDP.WebAudio.GraphObjectId
+---@field destinationId CDP.WebAudio.GraphObjectId
+---@field sourceOutputIndex? number
 ---@class CDP.WebAudio.nodeParamDisconnected_event
----@field contextId CDP.WebAudio.GraphObjectId 
----@field sourceId CDP.WebAudio.GraphObjectId 
----@field destinationId CDP.WebAudio.GraphObjectId 
----@field sourceOutputIndex? number 
+---@field contextId CDP.WebAudio.GraphObjectId
+---@field sourceId CDP.WebAudio.GraphObjectId
+---@field destinationId CDP.WebAudio.GraphObjectId
+---@field sourceOutputIndex? number
 ---This domain allows inspection of Web Audio API.
 ---https://webaudio.github.io/web-audio-api/
 ---@class CDP.WebAudio: CDP._ClientContainer
@@ -6375,9 +6374,9 @@ error('Cannot require a meta file')
 ---@alias CDP.WebAuthn.Ctap2Version "ctap2_0" | "ctap2_1"
 ---@alias CDP.WebAuthn.AuthenticatorTransport "usb" | "nfc" | "ble" | "cable" | "internal"
 ---@class CDP.WebAuthn.VirtualAuthenticatorOptions
----@field protocol CDP.WebAuthn.AuthenticatorProtocol 
+---@field protocol CDP.WebAuthn.AuthenticatorProtocol
 ---@field ctap2Version? CDP.WebAuthn.Ctap2Version Defaults to ctap2_0. Ignored if |protocol| == u2f.
----@field transport CDP.WebAuthn.AuthenticatorTransport 
+---@field transport CDP.WebAuthn.AuthenticatorTransport
 ---@field hasResidentKey? boolean Defaults to false.
 ---@field hasUserVerification? boolean Defaults to false.
 ---@field hasLargeBlob? boolean If set to true, the authenticator will support the largeBlob extension.<br>https://w3c.github.io/webauthn#largeBlob<br>Defaults to false.
@@ -6387,8 +6386,8 @@ error('Cannot require a meta file')
 ---@field automaticPresenceSimulation? boolean If set to true, tests of user presence will succeed immediately.<br>Otherwise, they will not be resolved. Defaults to true.
 ---@field isUserVerified? boolean Sets whether User Verification succeeds or fails for an authenticator.<br>Defaults to false.
 ---@class CDP.WebAuthn.Credential
----@field credentialId string 
----@field isResidentCredential boolean 
+---@field credentialId string
+---@field isResidentCredential boolean
 ---@field rpId? string Relying Party ID the credential is scoped to. Must be set when adding a<br>credential.
 ---@field privateKey string The ECDSA P-256 private key in PKCS#8 format. (Encoded as a base64 string when passed over JSON)
 ---@field userHandle? string An opaque byte sequence with a maximum size of 64 bytes mapping the<br>credential to a specific user. (Encoded as a base64 string when passed over JSON)
@@ -6397,45 +6396,45 @@ error('Cannot require a meta file')
 ---@class CDP.WebAuthn.enable_parameters
 ---@field enableUI? boolean Whether to enable the WebAuthn user interface. Enabling the UI is<br>recommended for debugging and demo purposes, as it is closer to the real<br>experience. Disabling the UI is recommended for automated testing.<br>Supported at the embedder's discretion if UI is available.<br>Defaults to false.
 ---@class CDP.WebAuthn.addVirtualAuthenticator_parameters
----@field options CDP.WebAuthn.VirtualAuthenticatorOptions 
+---@field options CDP.WebAuthn.VirtualAuthenticatorOptions
 ---@class CDP.WebAuthn.addVirtualAuthenticator_return
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
 ---@class CDP.WebAuthn.setResponseOverrideBits_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
 ---@field isBogusSignature? boolean If isBogusSignature is set, overrides the signature in the authenticator response to be zero.<br>Defaults to false.
 ---@field isBadUV? boolean If isBadUV is set, overrides the UV bit in the flags in the authenticator response to<br>be zero. Defaults to false.
 ---@field isBadUP? boolean If isBadUP is set, overrides the UP bit in the flags in the authenticator response to<br>be zero. Defaults to false.
 ---@class CDP.WebAuthn.removeVirtualAuthenticator_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
 ---@class CDP.WebAuthn.addCredential_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field credential CDP.WebAuthn.Credential 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field credential CDP.WebAuthn.Credential
 ---@class CDP.WebAuthn.getCredential_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field credentialId string 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field credentialId string
 ---@class CDP.WebAuthn.getCredential_return
----@field credential CDP.WebAuthn.Credential 
+---@field credential CDP.WebAuthn.Credential
 ---@class CDP.WebAuthn.getCredentials_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
 ---@class CDP.WebAuthn.getCredentials_return
----@field credentials CDP.WebAuthn.Credential[] 
+---@field credentials CDP.WebAuthn.Credential[]
 ---@class CDP.WebAuthn.removeCredential_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field credentialId string 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field credentialId string
 ---@class CDP.WebAuthn.clearCredentials_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
 ---@class CDP.WebAuthn.setUserVerified_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field isUserVerified boolean 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field isUserVerified boolean
 ---@class CDP.WebAuthn.setAutomaticPresenceSimulation_parameters
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field enabled boolean 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field enabled boolean
 ---@class CDP.WebAuthn.credentialAdded_event
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field credential CDP.WebAuthn.Credential 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field credential CDP.WebAuthn.Credential
 ---@class CDP.WebAuthn.credentialAsserted_event
----@field authenticatorId CDP.WebAuthn.AuthenticatorId 
----@field credential CDP.WebAuthn.Credential 
+---@field authenticatorId CDP.WebAuthn.AuthenticatorId
+---@field credential CDP.WebAuthn.Credential
 ---This domain allows configuring virtual authenticators to test the WebAuthn
 ---API.
 ---@class CDP.WebAuthn: CDP._ClientContainer
@@ -6478,41 +6477,41 @@ error('Cannot require a meta file')
 ---Corresponds to kMessage
 ---@class CDP.Media.PlayerMessage
 ---@field level "error" | "warning" | "info" | "debug" Keep in sync with MediaLogMessageLevel<br>We are currently keeping the message level 'error' separate from the<br>PlayerError type because right now they represent different things,<br>this one being a DVLOG(ERROR) style log message that gets printed<br>based on what log level is selected in the UI, and the other is a<br>representation of a media::PipelineStatus object. Soon however we're<br>going to be moving away from using PipelineStatus for errors and<br>introducing a new error type which should hopefully let us integrate<br>the error log level into the PlayerError type.
----@field message string 
+---@field message string
 ---Corresponds to kMediaPropertyChange
 ---@class CDP.Media.PlayerProperty
----@field name string 
----@field value string 
+---@field name string
+---@field value string
 ---Corresponds to kMediaEventTriggered
 ---@class CDP.Media.PlayerEvent
----@field timestamp CDP.Media.Timestamp 
----@field value string 
+---@field timestamp CDP.Media.Timestamp
+---@field value string
 ---Represents logged source line numbers reported in an error.
 ---NOTE: file and line are from chromium c++ implementation code, not js.
 ---@class CDP.Media.PlayerErrorSourceLocation
----@field file string 
----@field line integer 
+---@field file string
+---@field line integer
 ---Corresponds to kMediaError
 ---@class CDP.Media.PlayerError
----@field errorType string 
+---@field errorType string
 ---@field code integer Code is the numeric enum entry for a specific set of error codes, such<br>as PipelineStatusCodes in media/base/pipeline_status.h
 ---@field stack CDP.Media.PlayerErrorSourceLocation[] A trace of where this error was caused / where it passed through.
 ---@field cause CDP.Media.PlayerError[] Errors potentially have a root cause error, ie, a DecoderError might be<br>caused by an WindowsError
 ---@field data table Extra data attached to an error, such as an HRESULT, Video Codec, etc.
 ---@class CDP.Media.playerPropertiesChanged_event
----@field playerId CDP.Media.PlayerId 
----@field properties CDP.Media.PlayerProperty[] 
+---@field playerId CDP.Media.PlayerId
+---@field properties CDP.Media.PlayerProperty[]
 ---@class CDP.Media.playerEventsAdded_event
----@field playerId CDP.Media.PlayerId 
----@field events CDP.Media.PlayerEvent[] 
+---@field playerId CDP.Media.PlayerId
+---@field events CDP.Media.PlayerEvent[]
 ---@class CDP.Media.playerMessagesLogged_event
----@field playerId CDP.Media.PlayerId 
----@field messages CDP.Media.PlayerMessage[] 
+---@field playerId CDP.Media.PlayerId
+---@field messages CDP.Media.PlayerMessage[]
 ---@class CDP.Media.playerErrorsRaised_event
----@field playerId CDP.Media.PlayerId 
----@field errors CDP.Media.PlayerError[] 
+---@field playerId CDP.Media.PlayerId
+---@field errors CDP.Media.PlayerError[]
 ---@class CDP.Media.playersCreated_event
----@field players CDP.Media.PlayerId[] 
+---@field players CDP.Media.PlayerId[]
 ---This domain allows detailed inspection of media elements
 ---@class CDP.Media: CDP._ClientContainer
 ---Enables the Media domain
@@ -6538,16 +6537,16 @@ error('Cannot require a meta file')
 ---@alias CDP.DeviceAccess.DeviceId string A device id.
 ---Device information displayed in a user prompt to select a device.
 ---@class CDP.DeviceAccess.PromptDevice
----@field id CDP.DeviceAccess.DeviceId 
+---@field id CDP.DeviceAccess.DeviceId
 ---@field name string Display name as it appears in a device request user prompt.
 ---@class CDP.DeviceAccess.selectPrompt_parameters
----@field id CDP.DeviceAccess.RequestId 
----@field deviceId CDP.DeviceAccess.DeviceId 
+---@field id CDP.DeviceAccess.RequestId
+---@field deviceId CDP.DeviceAccess.DeviceId
 ---@class CDP.DeviceAccess.cancelPrompt_parameters
----@field id CDP.DeviceAccess.RequestId 
+---@field id CDP.DeviceAccess.RequestId
 ---@class CDP.DeviceAccess.deviceRequestPrompted_event
----@field id CDP.DeviceAccess.RequestId 
----@field devices CDP.DeviceAccess.PromptDevice[] 
+---@field id CDP.DeviceAccess.RequestId
+---@field devices CDP.DeviceAccess.PromptDevice[]
 ---@class CDP.DeviceAccess: CDP._ClientContainer
 ---Enable events in this domain.
 ---@field enable fun(self: CDP._ClientContainer): CDP.Error?
@@ -6564,12 +6563,12 @@ error('Cannot require a meta file')
 ---@alias CDP.Preload.RuleSetId string Unique id
 ---Corresponds to SpeculationRuleSet
 ---@class CDP.Preload.RuleSet
----@field id CDP.Preload.RuleSetId 
+---@field id CDP.Preload.RuleSetId
 ---@field loaderId CDP.Network.LoaderId Identifies a document which the rule set is associated with.
 ---@field sourceText string Source text of JSON representing the rule set. If it comes from<br>`<script>` tag, it is the textContent of the node. Note that it is<br>a JSON for valid case.<br><br>See also:<br>- https://wicg.github.io/nav-speculation/speculation-rules.html<br>- https://github.com/WICG/nav-speculation/blob/main/triggers.md
 ---@field backendNodeId? CDP.DOM.BackendNodeId A speculation rule set is either added through an inline<br>`<script>` tag or through an external resource via the<br>'Speculation-Rules' HTTP header. For the first case, we include<br>the BackendNodeId of the relevant `<script>` tag. For the second<br>case, we include the external URL where the rule set was loaded<br>from, and also RequestId if Network domain is enabled.<br><br>See also:<br>- https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script<br>- https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header
----@field url? string 
----@field requestId? CDP.Network.RequestId 
+---@field url? string
+---@field requestId? CDP.Network.RequestId
 ---@field errorType? CDP.Preload.RuleSetErrorType Error information<br>`errorMessage` is null iff `errorType` is null.
 ---@field errorMessage? string TODO(https://crbug.com/1425354): Replace this property with structured error.
 ---@alias CDP.Preload.RuleSetErrorType "SourceIsNotJsonObject" | "InvalidRulesSkipped"
@@ -6582,53 +6581,53 @@ error('Cannot require a meta file')
 ---same-origin main frame navigations during the attempt, but the attempt is
 ---still keyed with the initial URL.
 ---@class CDP.Preload.PreloadingAttemptKey
----@field loaderId CDP.Network.LoaderId 
----@field action CDP.Preload.SpeculationAction 
----@field url string 
----@field targetHint? CDP.Preload.SpeculationTargetHint 
+---@field loaderId CDP.Network.LoaderId
+---@field action CDP.Preload.SpeculationAction
+---@field url string
+---@field targetHint? CDP.Preload.SpeculationTargetHint
 ---Lists sources for a preloading attempt, specifically the ids of rule sets
 ---that had a speculation rule that triggered the attempt, and the
 ---BackendNodeIds of <a href> or <area href> elements that triggered the
 ---attempt (in the case of attempts triggered by a document rule). It is
 ---possible for mulitple rule sets and links to trigger a single attempt.
 ---@class CDP.Preload.PreloadingAttemptSource
----@field key CDP.Preload.PreloadingAttemptKey 
----@field ruleSetIds CDP.Preload.RuleSetId[] 
----@field nodeIds CDP.DOM.BackendNodeId[] 
+---@field key CDP.Preload.PreloadingAttemptKey
+---@field ruleSetIds CDP.Preload.RuleSetId[]
+---@field nodeIds CDP.DOM.BackendNodeId[]
 ---@alias CDP.Preload.PrerenderFinalStatus "Activated" | "Destroyed" | "LowEndDevice" | "InvalidSchemeRedirect" | "InvalidSchemeNavigation" | "InProgressNavigation" | "NavigationRequestBlockedByCsp" | "MainFrameNavigation" | "MojoBinderPolicy" | "RendererProcessCrashed" | "RendererProcessKilled" | "Download" | "TriggerDestroyed" | "NavigationNotCommitted" | "NavigationBadHttpStatus" | "ClientCertRequested" | "NavigationRequestNetworkError" | "MaxNumOfRunningPrerendersExceeded" | "CancelAllHostsForTesting" | "DidFailLoad" | "Stop" | "SslCertificateError" | "LoginAuthRequested" | "UaChangeRequiresReload" | "BlockedByClient" | "AudioOutputDeviceRequested" | "MixedContent" | "TriggerBackgrounded" | "MemoryLimitExceeded" | "FailToGetMemoryUsage" | "DataSaverEnabled" | "HasEffectiveUrl" | "ActivatedBeforeStarted" | "InactivePageRestriction" | "StartFailed" | "TimeoutBackgrounded" | "CrossSiteRedirectInInitialNavigation" | "CrossSiteNavigationInInitialNavigation" | "SameSiteCrossOriginRedirectNotOptInInInitialNavigation" | "SameSiteCrossOriginNavigationNotOptInInInitialNavigation" | "ActivationNavigationParameterMismatch" | "ActivatedInBackground" | "EmbedderHostDisallowed" | "ActivationNavigationDestroyedBeforeSuccess" | "TabClosedByUserGesture" | "TabClosedWithoutUserGesture" | "PrimaryMainFrameRendererProcessCrashed" | "PrimaryMainFrameRendererProcessKilled" | "ActivationFramePolicyNotCompatible" | "PreloadingDisabled" | "BatterySaverEnabled" | "ActivatedDuringMainFrameNavigation" | "PreloadingUnsupportedByWebContents" | "CrossSiteRedirectInMainFrameNavigation" | "CrossSiteNavigationInMainFrameNavigation" | "SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation" | "SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation" | "MemoryPressureOnTrigger" | "MemoryPressureAfterTriggered" | "PrerenderingDisabledByDevTools" | "ResourceLoadBlockedByClient" | "SpeculationRuleRemoved" | "ActivatedWithAuxiliaryBrowsingContexts" List of FinalStatus reasons for Prerender2.
 ---@alias CDP.Preload.PreloadingStatus "Pending" | "Running" | "Ready" | "Success" | "Failure" | "NotSupported" Preloading status values, see also PreloadingTriggeringOutcome. This<br>status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
 ---@alias CDP.Preload.PrefetchStatus "PrefetchAllowed" | "PrefetchFailedIneligibleRedirect" | "PrefetchFailedInvalidRedirect" | "PrefetchFailedMIMENotSupported" | "PrefetchFailedNetError" | "PrefetchFailedNon2XX" | "PrefetchFailedPerPageLimitExceeded" | "PrefetchEvicted" | "PrefetchHeldback" | "PrefetchIneligibleRetryAfter" | "PrefetchIsPrivacyDecoy" | "PrefetchIsStale" | "PrefetchNotEligibleBrowserContextOffTheRecord" | "PrefetchNotEligibleDataSaverEnabled" | "PrefetchNotEligibleExistingProxy" | "PrefetchNotEligibleHostIsNonUnique" | "PrefetchNotEligibleNonDefaultStoragePartition" | "PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy" | "PrefetchNotEligibleSchemeIsNotHttps" | "PrefetchNotEligibleUserHasCookies" | "PrefetchNotEligibleUserHasServiceWorker" | "PrefetchNotEligibleBatterySaverEnabled" | "PrefetchNotEligiblePreloadingDisabled" | "PrefetchNotFinishedInTime" | "PrefetchNotStarted" | "PrefetchNotUsedCookiesChanged" | "PrefetchProxyNotAvailable" | "PrefetchResponseUsed" | "PrefetchSuccessfulButNotUsed" | "PrefetchNotUsedProbeFailed" TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and<br>filter out the ones that aren't necessary to the developers.
 ---@class CDP.Preload.ruleSetUpdated_event
----@field ruleSet CDP.Preload.RuleSet 
+---@field ruleSet CDP.Preload.RuleSet
 ---@class CDP.Preload.ruleSetRemoved_event
----@field id CDP.Preload.RuleSetId 
+---@field id CDP.Preload.RuleSetId
 ---@class CDP.Preload.prerenderAttemptCompleted_event
----@field key CDP.Preload.PreloadingAttemptKey 
+---@field key CDP.Preload.PreloadingAttemptKey
 ---@field initiatingFrameId CDP.Page.FrameId The frame id of the frame initiating prerendering.
----@field prerenderingUrl string 
----@field finalStatus CDP.Preload.PrerenderFinalStatus 
+---@field prerenderingUrl string
+---@field finalStatus CDP.Preload.PrerenderFinalStatus
 ---@field disallowedApiMethod? string This is used to give users more information about the name of the API call<br>that is incompatible with prerender and has caused the cancellation of the attempt
 ---@class CDP.Preload.preloadEnabledStateUpdated_event
----@field disabledByPreference boolean 
----@field disabledByDataSaver boolean 
----@field disabledByBatterySaver boolean 
----@field disabledByHoldbackPrefetchSpeculationRules boolean 
----@field disabledByHoldbackPrerenderSpeculationRules boolean 
+---@field disabledByPreference boolean
+---@field disabledByDataSaver boolean
+---@field disabledByBatterySaver boolean
+---@field disabledByHoldbackPrefetchSpeculationRules boolean
+---@field disabledByHoldbackPrerenderSpeculationRules boolean
 ---@class CDP.Preload.prefetchStatusUpdated_event
----@field key CDP.Preload.PreloadingAttemptKey 
+---@field key CDP.Preload.PreloadingAttemptKey
 ---@field initiatingFrameId CDP.Page.FrameId The frame id of the frame initiating prefetch.
----@field prefetchUrl string 
----@field status CDP.Preload.PreloadingStatus 
----@field prefetchStatus CDP.Preload.PrefetchStatus 
----@field requestId CDP.Network.RequestId 
+---@field prefetchUrl string
+---@field status CDP.Preload.PreloadingStatus
+---@field prefetchStatus CDP.Preload.PrefetchStatus
+---@field requestId CDP.Network.RequestId
 ---@class CDP.Preload.prerenderStatusUpdated_event
----@field key CDP.Preload.PreloadingAttemptKey 
----@field status CDP.Preload.PreloadingStatus 
----@field prerenderStatus? CDP.Preload.PrerenderFinalStatus 
+---@field key CDP.Preload.PreloadingAttemptKey
+---@field status CDP.Preload.PreloadingStatus
+---@field prerenderStatus? CDP.Preload.PrerenderFinalStatus
 ---@field disallowedMojoInterface? string This is used to give users more information about the name of Mojo interface<br>that is incompatible with prerender and has caused the cancellation of the attempt.
 ---@class CDP.Preload.preloadingAttemptSourcesUpdated_event
----@field loaderId CDP.Network.LoaderId 
----@field preloadingAttemptSources CDP.Preload.PreloadingAttemptSource[] 
+---@field loaderId CDP.Network.LoaderId
+---@field preloadingAttemptSources CDP.Preload.PreloadingAttemptSource[]
 ---@class CDP.Preload: CDP._ClientContainer
 ---@field enable fun(self: CDP._ClientContainer): CDP.Error?
 ---@field disable fun(self: CDP._ClientContainer): CDP.Error?
@@ -6650,32 +6649,32 @@ error('Cannot require a meta file')
 ---@alias CDP.FedCm.DialogType "AccountChooser" | "AutoReauthn" | "ConfirmIdpSignin" Whether the dialog shown is an account chooser or an auto re-authentication dialog.
 ---Corresponds to IdentityRequestAccount
 ---@class CDP.FedCm.Account
----@field accountId string 
----@field email string 
----@field name string 
----@field givenName string 
----@field pictureUrl string 
----@field idpConfigUrl string 
----@field idpSigninUrl string 
----@field loginState CDP.FedCm.LoginState 
+---@field accountId string
+---@field email string
+---@field name string
+---@field givenName string
+---@field pictureUrl string
+---@field idpConfigUrl string
+---@field idpSigninUrl string
+---@field loginState CDP.FedCm.LoginState
 ---@field termsOfServiceUrl? string These two are only set if the loginState is signUp
----@field privacyPolicyUrl? string 
+---@field privacyPolicyUrl? string
 ---@class CDP.FedCm.enable_parameters
 ---@field disableRejectionDelay? boolean Allows callers to disable the promise rejection delay that would<br>normally happen, if this is unimportant to what's being tested.<br>(step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)
 ---@class CDP.FedCm.selectAccount_parameters
----@field dialogId string 
----@field accountIndex integer 
+---@field dialogId string
+---@field accountIndex integer
 ---@class CDP.FedCm.confirmIdpSignin_parameters
----@field dialogId string 
+---@field dialogId string
 ---@class CDP.FedCm.dismissDialog_parameters
----@field dialogId string 
----@field triggerCooldown? boolean 
+---@field dialogId string
+---@field triggerCooldown? boolean
 ---@class CDP.FedCm.dialogShown_event
----@field dialogId string 
----@field dialogType CDP.FedCm.DialogType 
----@field accounts CDP.FedCm.Account[] 
+---@field dialogId string
+---@field dialogType CDP.FedCm.DialogType
+---@field accounts CDP.FedCm.Account[]
 ---@field title string These exist primarily so that the caller can verify the<br>RP context was used appropriately.
----@field subtitle? string 
+---@field subtitle? string
 ---This domain allows interacting with the FedCM dialog.
 ---@class CDP.FedCm: CDP._ClientContainer
 ---@field enable fun(self: CDP._ClientContainer, params: CDP.FedCm.enable_parameters): CDP.Error?
